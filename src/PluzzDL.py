@@ -11,7 +11,7 @@
 #
 
 import base64
-import BeautifulSoup
+from bs4 import BeautifulSoup
 import binascii
 import datetime
 import hashlib
@@ -180,7 +180,7 @@ class PluzzDL( object ):
 		"""
 		Construit le nom du fichier de sortie
 		"""
-		return os.path.join( repertoire, "%s_%s.%s" % ( codeProgramme, datetime.datetime.fromtimestamp( timeStamp ).strftime( "%Y-%m-%d_%H-%M" ), extension ) )
+		return os.path.join( repertoire, "%s-%s.%s" % ( datetime.datetime.fromtimestamp( timeStamp ).strftime( "%Y%m%d" ), codeProgramme, extension ) )
 
 	def telechargerSousTitres( self, idEmission, nomChaine, nomVideo ):
 		"""
@@ -253,7 +253,7 @@ class PluzzDLM3U8( object ):
 
 		self.historique = Historique()
 
-		self.nomFichierFinal = "%s.mkv" % ( self.nomFichier[ :-3 ] )
+		self.nomFichierFinal = "%s.mp4" % ( self.nomFichier[ :-3 ] )
 
 	def ouvrirNouvelleVideo( self ):
 		"""
@@ -286,7 +286,8 @@ class PluzzDLM3U8( object ):
 			if( os.name == "nt" ):
 				commande = "ffmpeg.exe -i %s -vcodec copy -acodec copy %s 1>NUL 2>NUL" % ( self.nomFichier, self.nomFichierFinal )
 			else:
-				commande = "ffmpeg -i %s -vcodec copy -acodec copy %s 1>/dev/null 2>/dev/null" % ( self.nomFichier, self.nomFichierFinal )
+			#		commande = "avconv -i %s -vcodec copy -acodec copy %s 1>/dev/null 2>/dev/null" % ( self.nomFichier, self.nomFichierFinal )
+				commande = "avconv -i %s -vcodec copy -acodec copy %s " % ( self.nomFichier, self.nomFichierFinal )
 			if( os.system( commande ) == 0 ):
 				os.remove( self.nomFichier )
 				logger.info( "Fin !" )
