@@ -1,0 +1,32 @@
+
+theProg=/usr/local/bin/youtube-dl
+dstFolder=~/Dropbox/TV/$1
+mkdir $dstFolder
+tstamp=$(date +"%Y-%m-%d_%T")
+echo $tstamp "Start downloading from:" $2 >> $dstFolder/download-log.txt
+
+echo "path:" $PATH >> $dstFolder/download-log.txt
+python $theProg &>> $dstFolder/download-log.txt
+
+mkdir ~/mydl-temp
+cd ~/mydl-temp
+FULL_PATH_FILE_NAME="$($theProg --get-filename --restrict-filenames -o './%(upload_date)s-%(title)s.%(ext)s' $2)"
+FULL_FILE_NAME="${FULL_PATH_FILE_NAME##*/}"
+echo $tstamp "file:" $FULL_FILE_NAME >> $dstFolder/download-log.txt
+
+FILE_NAME="${FULL_FILE_NAME%.*}"
+$theProg --restrict-filenames -o './%(upload_date)s-%(title)s.%(ext)s' $2
+if [ $? -ne 0 ]
+then
+	tstamp=$(date +"%Y-%m-%d_%T")
+	echo $tstamp "Error downloading from:" $2 >> $dstFolder/download-log.txt
+else
+	tstamp=$(date +"%Y-%m-%d_%T")
+	echo $tstamp "Start converting:" $FULL_FILE_NAME >> $dstFolder/download-log.txt
+	avconv -i $FULL_FILE_NAME -vcodec copy -acodec libvo_aacenc $FILE_NAME.mp4
+	tstamp=$(date +"%Y-%m-%d_%T")
+	echo $tstamp "convertion completed " $FILE_NAME.mp4 >> $dstFolder/download-log.txt
+	mv $FILE_NAME.mp4 $dstFolder/
+	rm $FULL_FILE_NAME
+fi
+

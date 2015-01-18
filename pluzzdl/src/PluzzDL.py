@@ -261,7 +261,11 @@ class PluzzDLM3U8( object ):
 		"""
 		try :
 			# Ouverture du fichier
+			print "Nom Fichier:", self.nomFichier
+#			fullPathFile = os.path.join(os.getcwd(), self.nomFichier)
+#			print "fullPathFile:", fullPathFile
 			self.fichierVideo = open( self.nomFichier, "wb" )
+#			self.fichierVideo = open( fullPathFile, "wb" )
 		except :
 			raise PluzzDLException( "Impossible d'écrire dans le répertoire %s" % ( os.getcwd() ) )
 		# Ajout de l'en-tête
