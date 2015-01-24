@@ -1,6 +1,8 @@
 dst=$(date +"%Y-%m-%d_%a")
 dstFolder=${dst%.*}
 python canal-parser.py $dstFolder http://www.canalplus.fr/c-divertissement/c-le-tube/pid7542-le-tube.html
+python canal-parser.py $dstFolder http://www.canalplus.fr/c-divertissement/c-le-tube/pid7542-le-tube.html
 ~/mydl $dstFolder http://www.canalplus.fr/c-divertissement/c-le-petit-journal/pid6515-le-petit-journal.html
-~/myplzdl $dstFolder http://pluzz.francetv.fr/videos/c_a_vous_le_meilleur.html
+~/myplzdl $dstFolder http://pluzz.francetv.fr/videos/c_a_vous_les_meilleurs_moments.html
+~/myplzdl $dstFolder http://pluzz.francetv.fr/videos/ce_soir_ou_jamais.html
 python canal-parser.py $dstFolder http://www.canalplus.fr/c-infos-documentaires/c-salut-les-terriens/pid7527-salut-les-terriens.html
