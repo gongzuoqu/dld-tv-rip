@@ -288,10 +288,10 @@ class PluzzDLM3U8( object ):
 		logger.info( "Création du fichier MKV (vidéo finale); veuillez attendre quelques instants" )
 		try:
 			if( os.name == "nt" ):
-				commande = "ffmpeg.exe -i %s -vcodec copy -acodec copy %s 1>NUL 2>NUL" % ( self.nomFichier, self.nomFichierFinal )
+				commande = "ffmpeg.exe -i %s -vcodec copy -acodec libvo_aacenc %s 1>NUL 2>NUL" % ( self.nomFichier, self.nomFichierFinal )
 			else:
 			#		commande = "avconv -i %s -vcodec copy -acodec copy %s 1>/dev/null 2>/dev/null" % ( self.nomFichier, self.nomFichierFinal )
-				commande = "avconv -i %s -vcodec copy -acodec copy %s " % ( self.nomFichier, self.nomFichierFinal )
+				commande = "avconv -i %s -vcodec copy -acodec libvo_aacenc %s " % ( self.nomFichier, self.nomFichierFinal )
 			if( os.system( commande ) == 0 ):
 				os.remove( self.nomFichier )
 				logger.info( "Fin !" )
