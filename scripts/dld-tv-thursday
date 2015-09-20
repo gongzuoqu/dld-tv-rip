@@ -1,7 +1,8 @@
 dst=$(date +"%Y-%m-%d_%a")
 dstFolder=${dst%.*}
-~/myplzdl $dstFolder http://pluzz.francetv.fr/videos/envoye_special.html
-~/myplzdl $dstFolder http://pluzz.francetv.fr/videos/complement_denquete.html
+cd $(dirname $0)
+./myplzdl $dstFolder http://pluzz.francetv.fr/videos/envoye_special.html
+./myplzdl $dstFolder http://pluzz.francetv.fr/videos/complement_denquete.html
 
 
 
