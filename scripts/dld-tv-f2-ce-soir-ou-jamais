@@ -1,0 +1,9 @@
+dst=$(date +"%Y-%m-%d_%a")
+#dstFolder=${dst%.*}
+dstFolder="CeSoirOuJamais"
+url=http://pluzz.francetv.fr/videos/ce_soir_ou_jamais.html
+
+cd $(dirname $0)
+./myplzdl $dstFolder $url
+
+
