@@ -3,6 +3,7 @@ dstFolder=${dst%.*}
 cd $(dirname $0)
 ./myplzdl $dstFolder http://pluzz.francetv.fr/videos/envoye_special.html
 ./myplzdl $dstFolder http://pluzz.francetv.fr/videos/complement_denquete.html
-
+./myplzdl $dstFolder http://pluzz.francetv.fr/videos/un_oeil_sur_la_planete
+./dld-tv-f2-des-paroles-et-des-actes
 
 
