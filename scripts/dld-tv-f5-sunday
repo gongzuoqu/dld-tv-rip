@@ -3,4 +3,5 @@ dstFolder=${dst%.*}
 cd $(dirname $0)
 ./myplzdl $dstFolder http://pluzz.francetv.fr/videos/medias_le_mag.html
 ./myplzdl $dstFolder http://pluzz.francetv.fr/videos/c_politique.html
+./myplzdl $dstFolder http://pluzz.francetv.fr/videos/judaica.html
 
