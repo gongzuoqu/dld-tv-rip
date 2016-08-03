@@ -1,0 +1,25 @@
+#!/bin/bash
+
+vlc="/usr/bin/vlc"
+if [ ! -e "$vlc" ]; then
+    echo "Command '$vlc' does not exist"
+    exit 1
+fi
+
+for file in $1/*flac
+do
+  echo "Processing $file ..."
+  # take action on each file. $f store current file name
+  ls -al "$file"
+  dstFolder=`dirname "$file"`
+  fileName=`basename "$file"`
+  newFileName="${fileName%.flac}.mp3"
+  echo "DestFolder: $dstFolder"
+  echo "Convert [$fileName] to [$newFileName]"
+
+  $vlc -I dummy -q "$file" \
+       --sout "#transcode{acodec=mp3,ab=256}:standard{mux=mp4,dst=\"$dstFolder/$newFileName\",access=file}" \
+       vlc://quit
+
+done
+

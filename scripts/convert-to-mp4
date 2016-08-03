@@ -1,0 +1,26 @@
+#!/bin/bash
+
+vlc="/usr/bin/vlc"
+if [ ! -e "$vlc" ]; then
+    echo "Command '$vlc' does not exist"
+    exit 1
+fi
+
+for file in "$1"
+do
+  echo "Processing $file ..."
+  # take action on each file. $f store current file name
+  ls -lh "$file"
+  dstFolder=`dirname "$file"`
+  fileName=`basename "$file"`
+  newFileName="${fileName%.*}.mp4"
+  echo "DestFolder: $dstFolder"
+  echo "Convert [$fileName] to [$newFileName]"
+
+  $vlc -I dummy -q "$file" \
+       --sout "#transcode{vcodec=mp4v,vb=1024,acodec=mp3,ab=256}:standard{mux=mp4,dst=\"$dstFolder/$newFileName\",access=file}" \
+       vlc://quit
+  ls -lh "$dstFolder/$newFileName"
+  
+done
+
