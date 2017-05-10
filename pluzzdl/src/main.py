@@ -14,6 +14,7 @@ __url__ = "http://code.google.com/p/tvdownloader/"
 # Modules
 #
 
+import requests
 import argparse
 import logging
 import platform
@@ -26,6 +27,20 @@ from PluzzDL import PluzzDL
 #
 # Main
 #
+
+REG_EXP = 'www.france.tv/(?:[a-zA-Z]|[0-9]|[$-_@.&+]|[!*\(\),]|(?:%[0-9a-fA-F][0-9a-fA-F]))+'
+
+def ExtractUrl(url):
+    page = requests.get(url)
+
+    # print "page.content", page.content
+    index = page.content.find("la sélection")
+
+    urls = re.findall(REG_EXP, page.content[index:])
+    target =urls[0]
+    print "Target URl:", target
+    return target
+
 
 if (__name__ == "__main__"):
 
@@ -44,6 +59,7 @@ if (__name__ == "__main__"):
                         help='récupère le fichier de sous-titres de la vidéo (si disponible)')
 
     parser.add_argument("-o", "--outDir", action="store", default=None, help='output folder (default .)')
+    parser.add_argument("-x", "--extractedUrl", action="store_true", default=False, help='extract Selection URL (france.tv)')
 
     parser.add_argument("--nocolor", action='store_true', default=False, help='désactive la couleur dans le terminal')
     parser.add_argument("--version", action='version', version="pluzzdl %s" % (__version__))
@@ -66,14 +82,6 @@ if (__name__ == "__main__"):
     logger.debug("pluzzdl %s avec Python %s (%s)" % (__version__, platform.python_version(), platform.machine()))
     logger.debug("OS : %s %s" % (platform.system(), platform.version()))
 
-    # # Verification de l'URL
-    # if ((re.match("http://www.pluzz.fr/[^\.]+?\.html", args.urlEmission) is None)
-    #     and
-    #         (re.match("http://pluzz.francetv.fr/videos/[^\.]+?\.html", args.urlEmission) is None)
-    #     ):
-    #     logger.error("L'URL \"%s\" n'est pas valide" % (args.urlEmission))
-    #     sys.exit(-1)
-
     if (re.match("https://www.france.tv/[^\.]+?\.html", args.urlEmission) is None):
         logger.error("L'URL \"%s\" n'est pas valide" % (args.urlEmission))
         sys.exit(-1)
@@ -95,11 +103,17 @@ if (__name__ == "__main__"):
     else:
         progressFnct = lambda x: None
 
+    # extract target url from Emission page
+    if (args.extractedUrl):
+        target = ExtractUrl(args.urlEmission)
+    else:
+        target = args.urlEmission
+
     # logger.info( args.urlEmission )
     # logger.info( args.proxy)
     # logger.info(  args.sock )
     # Telechargement de la video
-    PluzzDL(url=args.urlEmission,
+    PluzzDL(url=target,
             proxy=args.proxy,
             proxySock=args.sock,
             sousTitres=args.soustitres,

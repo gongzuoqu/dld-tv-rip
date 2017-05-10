@@ -6,13 +6,12 @@ tstamp=$(date +"%Y-%m-%d_%T")
 echo $tstamp "Start downloading from:" $2 >> $dstFolder/download-log.txt
 
 cd $localFolder
-mkdir ../plzdl-tmp
-#./pluzzdl.sh -o plzdl-tmp -b $2
-python ../pluzzdl/src/main.py -o ../plzdl-tmp -b $2
+mkdir ../tmp-francetv
+python ../pluzzdl/src/main.py -x -o ../tmp-francetv -b $2
 
 tstamp=$(date +"%Y-%m-%d_%T")
 echo $tstamp "Download completed:" $2 >> $dstFolder/download-log.txt
 
-mv ../plzdl-tmp/*.mp4 $dstFolder/
-rm ../plzdl-tmp/*.*
+mv ../tmp-francetv/*.mp4 $dstFolder/
+rm ../tmp-francetv/*.*
 
