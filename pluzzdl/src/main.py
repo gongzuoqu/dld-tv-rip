@@ -37,7 +37,8 @@ def ExtractUrl(url):
     index = page.content.find("la sélection")
 
     urls = re.findall(REG_EXP, page.content[index:])
-    target =urls[0]
+    target =urls[0].replace("www.","https://")
+
     print "Target URl:", target
     return target
 
