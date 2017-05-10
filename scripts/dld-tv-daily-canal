@@ -1,6 +1,0 @@
-cd ~
-dst=$(date +"%Y-%m-%d_%a")
-dstFolder=${dst%.*}
-/usr/bin/python ~/canal-parser.py $dstFolder http://www.canalplus.fr/c-divertissement/c-le-grand-journal/pid5411-le-grand-journal.html
-~/mydl $dstFolder http://www.canalplus.fr/c-divertissement/pid1784-c-les-guignols.html
-~/mydl $dstFolder http://www.canalplus.fr/c-divertissement/c-le-petit-journal/pid6515-emission.html

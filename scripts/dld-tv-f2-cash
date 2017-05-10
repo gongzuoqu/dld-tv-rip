@@ -1,9 +1,6 @@
 dst=$(date +"%Y-%m-%d_%a")
 dstFolder=${dst%.*}
-#dstFolder="CashInvestigation"
-url=http://pluzz.francetv.fr/videos/cash_investigation.html
+localFolder=$(dirname $0)
+cd $localFolder
 
-cd $(dirname $0)
-./myplzdl $dstFolder $url
-
-
+./dld-prog-francetv $dstFolder https://www.france.tv/france-2/cash-investigations/

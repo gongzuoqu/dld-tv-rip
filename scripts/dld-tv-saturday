@@ -3,4 +3,3 @@ dstFolder=${dst%.*}
 cd $(dirname $0)
 ./dld-tv-f5-cdanslair
 ./dld-tv-f5-clhebdo
-./mydl $dstFolder http://www.canalplus.fr/c-emissions/le-tube/pid7542-le-tube.html
