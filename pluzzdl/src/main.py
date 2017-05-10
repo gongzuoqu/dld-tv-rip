@@ -82,9 +82,9 @@ if (__name__ == "__main__"):
     logger.debug("pluzzdl %s avec Python %s (%s)" % (__version__, platform.python_version(), platform.machine()))
     logger.debug("OS : %s %s" % (platform.system(), platform.version()))
 
-    if (re.match("https://www.france.tv/[^\.]+?\.html", args.urlEmission) is None):
-        logger.error("L'URL \"%s\" n'est pas valide" % (args.urlEmission))
-        sys.exit(-1)
+    # if (re.match("https://www.france.tv/[^\.]+?\.html", args.urlEmission) is None):
+    #     logger.error("L'URL \"%s\" n'est pas valide" % (args.urlEmission))
+    #     sys.exit(-1)
 
     # Verification du proxy
     if (args.proxy is not None):
