@@ -4,6 +4,9 @@ cd $(dirname $0)
 ./dld-tv-f5-cdanslair
 ./dld-tv-f5-cavous
 ./dld-tv-f2-jt20h
-python ~/canal-parser.py $dstFolder http://www.canalplus.fr/c-divertissement/c-le-grand-journal/pid5411-le-grand-journal.html
-~/mydl $dstFolder http://www.canalplus.fr/c-divertissement/pid1784-c-les-guignols.html
-~/mydl $dstFolder http://www.canalplus.fr/c-divertissement/c-le-petit-journal/pid6515-emission.html
+#./dld-tv-cp-le-petit-journal
+
+# python ~/canal-parser.py $dstFolder http://www.canalplus.fr/c-divertissement/c-le-grand-journal/pid5411-le-grand-journal.html
+# ~/mydl $dstFolder http://www.canalplus.fr/c-divertissement/pid1784-c-les-guignols.html
+# ~/mydl $dstFolder http://www.canalplus.fr/c-emissions/le-petit-journal/pid6515-le-petit-journal.html
+
