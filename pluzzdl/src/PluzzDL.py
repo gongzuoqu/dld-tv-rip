@@ -47,7 +47,7 @@ class PluzzDL(object):
 	Classe principale pour lancer un telechargement
 	"""
 
-    DATA_MAIN_VIDEO= 'data-main-video="[0-9]*"'
+    DATA_MAIN_VIDEO= 'data-main-video="([0-9][a-z]-)*"'
     REGEX_ID = "http://info.francetelevisions.fr/\?id-video=([^\"]+)"
     XML_DESCRIPTION = "http://www.pluzz.fr/appftv/webservices/video/getInfosOeuvre.php?mode=zeri&id-diffusion=_ID_EMISSION_"
     JSON_DESCRIPTION = "http://webservices.francetelevisions.fr/tools/getInfosOeuvre/v2/?idDiffusion=_ID_EMISSION_&catalogue=Pluzz"
@@ -130,12 +130,16 @@ class PluzzDL(object):
         page = self.navigateur.getFichier(url)
         # idEmission = re.findall(self.REGEX_ID, page)[0]
         # LBR 10/05/2017
-        data_main_video_tag = re.findall(self.DATA_MAIN_VIDEO, page)[0]
-        idEmission = re.findall('"[0-9]*"', data_main_video_tag)[0]
-        idEmission = idEmission.strip('"')
+	data_main_video_tag = page[page.find("data-main-video="):]
+	data_id = data_main_video_tag[data_main_video_tag.find('"')+1:]
+	id_emission = data_id[:data_id.find('"')]
+        #data_main_video_tag = re.findall(self.DATA_MAIN_VIDEO, page)[0]
+	print "Found data-main-video tag:", id_emission
+        #idEmission = re.findall('"[0-9]*"', data_main_video_tag)[0]
+        #idEmission = idEmission.strip('"')
         # idEmission = "157542198"
-        logger.debug("ID de l'émission : %s" % (idEmission))
-        return idEmission
+        logger.debug("ID de l'émission : %s" % (id_emission))
+        return id_emission
 
     # except :
     # raise PluzzDLException( "Impossible de récupérer l'ID de l'émission" )

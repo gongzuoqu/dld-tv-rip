@@ -1,0 +1,17 @@
+dstFolder=~/Dropbox/TV/$1
+mkdir $dstFolder
+localFolder=$(dirname $0)
+
+tstamp=$(date +"%Y-%m-%d_%T")
+echo $tstamp "Start downloading from:" $2 >> $dstFolder/download-log.txt
+
+cd $localFolder
+mkdir ../tmp-francetv
+python ../pluzzdl/src/main.py -o ../tmp-francetv -b $2
+
+tstamp=$(date +"%Y-%m-%d_%T")
+echo $tstamp "Download completed:" $2 >> $dstFolder/download-log.txt
+
+mv ../tmp-francetv/*.mp4 $dstFolder/
+rm ../tmp-francetv/*.*
+
