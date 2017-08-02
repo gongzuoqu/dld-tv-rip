@@ -299,16 +299,12 @@ class PluzzDLM3U8(object):
     def creerMKV(self):
         """
 		Creer un mkv a partir de la video existante (cree l'en-tete de la video)
-		"""
+	"""
         logger.info("Création du fichier MKV (vidéo finale); veuillez attendre quelques instants")
-        try:
-            if (os.name == "nt"):
-                commande = "ffmpeg.exe -i %s -vcodec copy -acodec libvo_aacenc %s 1>NUL 2>NUL" % (
-                self.nomFichier, self.nomFichierFinal)
-            else:
-                #		commande = "avconv -i %s -vcodec copy -acodec copy %s 1>/dev/null 2>/dev/null" % ( self.nomFichier, self.nomFichierFinal )
-                commande = "avconv -i %s -vcodec copy -acodec libvo_aacenc %s " % (
-                self.nomFichier, self.nomFichierFinal)
+        logger.info("Convert: %s -> %s" % (self.nomFichier, self.nomFichierFinal))
+	commande = "ffmpeg -i %s -c:a aac -strict -2 -vcodec copy %s" % (self.nomFichier, self.nomFichierFinal)
+
+       	try:
             if (os.system(commande) == 0):
                 os.remove(self.nomFichier)
                 logger.info("Fin !")
@@ -318,6 +314,7 @@ class PluzzDLM3U8(object):
                     self.nomFichier))
         except:
             raise PluzzDLException("Impossible de créer la vidéo finale")
+
 
     def telecharger(self):
         # Recupere le fichier master.m3u8

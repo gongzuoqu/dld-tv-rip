@@ -13,5 +13,5 @@ tstamp=$(date +"%Y-%m-%d_%T")
 echo $tstamp "Download completed:" $2 >> $dstFolder/download-log.txt
 
 mv ../tmp-francetv/*.mp4 $dstFolder/
-rm ../tmp-francetv/*.*
+# rm ../tmp-francetv/*.*
 
