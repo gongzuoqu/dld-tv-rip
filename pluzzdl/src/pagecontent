@@ -1,0 +1,716 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" dir="ltr" lang="fr_FR">
+<head profile="http://gmpg.org/xfn/11">
+<meta name="robots" content="noindex">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" >
+<meta property='og:type' content='video' />
+<meta property='og:title' content='Vénus : confessions à nues' />
+<meta property='og:image' content='https://static-cdn.arte.tv/resize/BcngRz5ShV_iEan_2qEp_B18FUo=/940x530/smart/filters:strip_icc()/apios/Img_data/21/072443-000-A_2188165.jpg' />
+<link rel='image_src' href='https://static-cdn.arte.tv/resize/BcngRz5ShV_iEan_2qEp_B18FUo=/940x530/smart/filters:strip_icc()/apios/Img_data/21/072443-000-A_2188165.jpg' />
+<meta property="og:site_name" content="arte.tv"/>
+<meta property='og:url' content='https://www.arte.tv/player/v3/index.php?json_url=https%3A%2F%2Fapi.arte.tv%2Fapi%2Fplayer%2Fv1%2Fconfig%2Ffr%2F072443-000-A%3Fautostart%3D0%26lifeCycle%3D1&amp;lang=fr_FR&amp;autostart=0&amp;embed=0' data-shortUrl="https://tinyurl.com/y8j6utlu"/>
+<meta property='og:description' content='Dans un studio improvisé, face à la caméra, des jeunes femmes parlent sans détour du sexe, du désir, de la frustration. Un film choral d&#039;une intimité absolue et troublante.
+' />
+<meta property="fb:app_id" content="416821615179393" />
+<meta name="twitter:card" content="player">
+<meta name="twitter:site" content="@ARTEfr">
+<meta name="twitter:creator" content="@ARTEfr">
+<meta name="twitter:title" content="Vénus : confessions à nues">
+<meta name="twitter:description" content="Dans un studio improvisé, face à la caméra, des jeunes femmes parlent sans détour du sexe, du désir, de la frustration. Un film choral d&#039;une intimité absolue et troublante.
+">
+<meta name="twitter:image" content="https://static-cdn.arte.tv/resize/BcngRz5ShV_iEan_2qEp_B18FUo=/940x530/smart/filters:strip_icc()/apios/Img_data/21/072443-000-A_2188165.jpg">
+<meta name="twitter:player" content="https://www.arte.tv/player/v3/index.php?json_url=https%3A%2F%2Fapi.arte.tv%2Fapi%2Fplayer%2Fv1%2Fconfig%2Ffr%2F072443-000-A%3Fautostart%3D0%26lifeCycle%3D1&amp;lang=fr_FR&amp;autostart=0&amp;embed=1">
+<meta name="twitter:player:height" content="360">
+<meta name="twitter:player:width" content="640">
+<meta name="twitter:domain" content="arte.tv">
+<meta name="twitter:app:id:iphone" content="405028510">
+<meta name="twitter:app:id:ipad" content="405028510">
+<meta name="twitter:app:id:googleplay" content="tv.arte.plus7">
+<meta name="twitter:app:name:iphone" content="Application  ARTE  pour  iPhone">
+<meta name="twitter:app:name:ipad" content="Application  ARTE  pour  iPad">
+<meta name="twitter:app:name:googleplay" content="Application  ARTE  pour  Androïd">
+<meta name="twitter:app:url:iphone" content="https://itunes.apple.com/fr/app/arte/id405028510?mt=8">
+<meta name="twitter:app:url:ipad" content="https://itunes.apple.com/fr/app/arte/id405028510?mt=8">
+<meta name="twitter:app:url:googleplay" content="https://play.google.com/store/apps/details?id=tv.arte.plus7&amp;hl=fr">
+<link rel="me" href="https://twitter.com/ARTEfr">
+<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=0, width=device-width"/>
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="480">
+<meta name="robots" content="noindex">
+<title>Vénus : confessions à nues</title>
+<meta name="description" content="Dans un studio improvisé, face à la caméra, des jeunes femmes parlent sans détour du sexe, du désir, de la frustration. Un film choral d&#039;une intimité absolue et troublante.
+" />
+<link rel="stylesheet" type="text/css" href="https://static-cdn.arte.tv/player/v3//build/css/arte.css?ver=3.26.2-7d042a8f5f213e2448dd" />
+<script>
+if(window.location.host.indexOf("arte.tv")>0)
+document.domain = "arte.tv";
+</script>
+<script src="https://static-cdn.arte.tv/player/v3//js/views/plugins/estat/mu-5.2.1.js"></script>
+<script src="https://static-cdn.arte.tv/components/bundles/ShareBar.min.js"></script>
+</head>
+<body>
+<div id="jwPlayerTeaser" class="jwplayer jw-reset jw-skin-arte jw-state-paused jw-flag-aspect-mode" tabindex="0">
+</div>
+<div class="jw-skin-arte jw-reset">
+<div id="playlistContainer" class="open jw-background-color"></div>
+</div>
+<script>var cdnUrl = 'https://static-cdn.arte.tv/player/v3//';</script>
+<script type="text/template" id="pluginInfoTemplate">
+<span class="jw-reset jw-icon jw-icon-close"></span>
+<h1><%= VTI %><% if(!_.isUndefined(subtitle) && !_.isNull(subtitle)) { %> - <%= subtitle %><% } %></h1>
+<% if(VDA){ %>
+<p class="info-vda"><%= VDA %></p>
+<% } %>
+<p>
+<% if(duration!==0) { %>
+<span class="duration"><%= duration %></span>
+<% } %>
+<% if(rights_until) { %>
+<span class="rights_until"> <%= rights_until %></span>
+<% } %>
+</p>
+<% if(!_.isNull(V7T)) { %>
+<p class="teaserText"><%= V7T %></p>
+<% } %>
+<% if(!_.isNull(VTR)) { %>
+<p><a class="infoLink" title="<%= VTI %>" href="<%= VTR %>"><i class="jw-icon-info"></i> <%= infoLinkText %></a></p>
+<% } %>
+</script>
+<script type="text/template" id="pluginMoralityTemplate">
+<div class="jw-morality-wrapper">
+<form id="moralityCheck">
+<div class="warning-msg"><p><%= morality_question_check %></p></div>
+<% if(!_.isNull(morality_response_yes) || !_.isNull(morality_response_no)) { %>
+<div>
+<% if(!_.isNull(morality_response_yes)) { %>
+<button value="yes" class="button" name="confirmAge"><%= morality_response_yes %></button>&nbsp;
+<% } %>
+<% if(!_.isNull(morality_response_no)) { %>
+<button class="button" value="no" name="confirmAge"><%= morality_response_no %></button>
+<% } %>
+</div>
+<% } %>
+</form>
+</div></script>
+<script type="text/template" id="pluginPartnerLogoTemplate">
+<% if(!_.isNull(link)) { %>
+<a href="<%= link %>" target="_blank">
+<% } %>
+<img src="<%= image %>" alt="" width="<%= width %>" height="<%= height %>">
+<% if(!_.isNull(link)) { %>
+</a>
+<% } %>
+</script>
+<script type="text/template" id="shareBoxTemplate">
+<div class='jw-sharing-row jw-sharing-title'>
+<h4 class="share selected"><%= topdockbutton_share %></h4>
+<h4 class="embed"><%= topdockbutton_embed %></h4>
+</div>
+<div class="sharePart">
+<div class="jw-sharing-link"><input type="text" readonly="true" class="jw-sharing-text"/></div>
+<div id="arte-share-bar-1" class="arte-share-bar arte-share-bar--small arte-share-bar--center"></div>
+<div class="columnContainer"></div>
+</div>
+<div class="embedPart">
+<div class="jw-sharing-embed"><input type="text" readonly="true" class="jw-sharing-text"/></div>
+<div class="columnContainer"></div>
+</div></script>
+<script type="text/template" id="relatedBoxTemplate">
+<div class="jw-related-grid jw-align-left jw-related-row-3 jw-related-col-4">
+<h4><%= title %></h4>
+<% for(var video in videoList) { %>
+<div href="<%= videoList[video].VUP %>" class="jw-related-thumb jw-reset">
+<a href="<%= videoList[video].VUP %>">
+<img class="jw-related-thumb-cover jw-reset" src="<%= videoList[video].VTU.IUR %>" />
+<span class="jw-related-thumb-title jw-text jw-reset"><%= videoList[video].VTI %></span>
+<span class="duration"><%= videoList[video].duration %></span>
+</a>
+</div>
+<% } %>
+</div></script>
+<script type="text/template" id="pluginMessageTemplate">
+<div id="pluginMessage">
+<% if((typeof title !== 'undefined' && !_.isNull(title)) || (typeof subtitle !== 'undefined' &&  !_.isNull(subtitle))) { %><div class="videoTitleContainer"><% } %>
+<% if(typeof title !== 'undefined' && !_.isNull(title)) { %><h1 class="videoTitle"><%= title %></h1><% } %>
+<% if(typeof subtitle !== 'undefined' &&  !_.isNull(subtitle)) { %><h2 class="videoSubtitle"><%= subtitle %></h2><% } %>
+<% if((typeof title !== 'undefined' && !_.isNull(title)) || (typeof subtitle !== 'undefined' &&  !_.isNull(subtitle))) { %></div><% } %>
+<p><%= message %></p>
+</div></script>
+<script type="text/template" id="pluginCountdownTemplate">
+<% if(!_.isNull(title) || !_.isNull(subtitle)) { %><div class="videoTitleContainer"><% } %>
+<% if(!_.isNull(title)) { %><h1 class="videoTitle"><%= title %></h1><% } %>
+<% if(!_.isNull(subtitle)) { %><h2 class="videoSubtitle"><%= subtitle %></h2><% } %>
+<% if(!_.isNull(title) || !_.isNull(subtitle)) { %></div><% } %>
+<p class="ctn_intro"><%= ctn_intro %></p>
+<p class="countdown"><%= count %></p></script>
+<script type="text/template" id="pluginVersionItemTemplate">
+<div data-versionprog="<%= id %>"
+<% if (selected) { %>
+class="selected"
+<% } %>
+><%= title %></div></script>
+<script type="text/template" id="pluginEditChapterTemplate">
+<div class="jwp-overlay-content jw-reset">
+<div class="jwp-overlay-header-text jw-reset"><%= box_title_label %></div>
+<form>
+<div class="clearfix">
+<div class="tc_container">
+<label for="tc"><%= timecode_label %></label>
+<div>
+<input name="tc" id="tc" type="text" value="<%= current_tc %>">
+</div>
+</div>
+<div class="edit">
+<label for="title"><%= title_label %></label>
+<div>
+<input name="title" id="title" type="text" value="<%= current_title %>" maxlength="256">
+</div>
+</div>
+<div class="edit" style="display: none;">
+<label for="description"><%= description_label %></label>
+<div>
+<input name="description" id="description" type="text" value="<%= current_description %>" maxlength="512">
+</div>
+</div>
+<% if(!_.isNull(uniqueID)) { %>
+<input name="id" id="id" type="hidden" value="<%= uniqueID %>">
+<% } %>
+<div class="button save"><%= save_label %></div>
+</div>
+</form>
+</div></script>
+<script type="text/template" id="playlistTemplate">
+<div id="playlistHeader">
+<span class="jw-icon jw-icon-close"></span>
+<% if(!_.isNull(overTitle)){ %> <h5><%= overTitle %></h5><% } %>
+<div class="jw-icon jw-icon-inline jw-button-color jw-reset jw-icon-playlist" role="button" tabindex="0" aria-label="playlist"><span class="path1"></span><span class="path2"></span></div>
+<h4><%= title %></h4>
+<p><% if(!_.isEmpty(subtitle)){ %><%= subtitle %><br/><% } %><%=shortDescription %></p>
+<% if(!_.isEmpty(nbItem)){ %><span class="itemCount"><%= nbItem %></span><% } %>
+<% if(!_.isNull(add_text)){ %> <a href="javascript:void(0);" class="add"><%= add_text %></a> - <% } %>
+<% if(!_.isNull(save_text)){ %> <a href="javascript:void(0);" class="save"><%= save_text %></a><% } %>
+</div>
+<ul></ul></script>
+<script type="text/template" id="playlistItemTemplate">
+<li class="<% if(chapter_toDelete == true) { %>toDelete<% } %>" id="playlistItem_<%= id %>"
+<% if(!_.isEmpty(jsonUrl)){ %>data-jsonUrl="<%= jsonUrl %>"<% } %>
+<% if(!_.isEmpty(configPlayer)){ %>data-configPlayer="<%= configPlayer %>"<% } %>
+<% if(!_.isEmpty(id)){ %>id="playlistItem_<%= id %>"<% } %>
+<% if(!_.isEmpty(chapter_id)){ %>data-chapter-id="<%= chapter_id %>"<% } %>
+<% if(!_.isNull(timecode)){ %>data-chapter-tc="<%= timecode %>"<% } %>
+<% if(!_.isNull(title)){ %>data-chapter-title="<%= title %>"<% } %>
+<% if(!_.isNull(chapter_desc)){ %>data-chapter-description="<%= chapter_desc %>"<% } %>
+>
+<div class="playlistItem-wrapper">
+<div class="image-wrapper jw-icon">
+<% if(!_.isEmpty(image)){ %><img src="<%= image %>" alt="<%= title %>" /><% } %>
+<% if(!_.isEmpty(spriteUrl)){ %><div class="bgimage" style="background-image:url(<%= spriteUrl %>); background-position:-<%= id*142 %>px 0"></div><% } %>
+<% if(!_.isEmpty(imageLabel)){ %><span class="jw-label jw-label-live"><%= imageLabel %></span><% } %>
+</div>
+<div class="text-wrapper">
+<h3 id="title_<%= id %>"><%= title %></h3>
+<% if(!_.isEmpty(subtitle)){ %>
+<p class="subtitle"><%= subtitle %></p>
+<% } %>
+<% if(typeof kind != "undefined" && (
+kind == "CLIP" ||
+kind == "MANUAL_CLIP" ||
+kind == "TRAILER"
+)){ %>
+<div class='badge'><%= kindLabel %></div>
+<% } %>
+<p>
+<%= additionalInfos %>
+<% if(!_.isNull(timecode)){ %>
+<a href="javascript:void(0);" class="delete"><%= delete_text %></a> - <a href="javascript:void(0);" class="edit"><%= edit_text %></a>
+<% } %>
+</p>
+</div>
+<span class="selectedBar"></span>
+</div>
+</li></script>
+<script type="text/template" id="columnTemplate">
+<div id="<%= id %>" class="column">
+<h4><%= title %></h4>
+<ul class="jw-menu jw-reset">
+<% for(var item in items) { %>
+<li class="jw-text jw-option jw-reset <% if(items[item].selected) { %>selected<% } %>" <% if(!_.isNull(items[item].id)) { %> id="<%= items[item].id %>" <% } %>><%= items[item].title %></li>
+<% } %>
+</ul>
+</div></script>
+<script type="text/template" id="fullOverlayTemplate">
+<div id='fullOverlay'>
+<span class="jwp-overlay-close jw-reset jw-icon jw-icon-close"></span>
+<div class="fullOverlay_content"></div>
+</div></script>
+<script type="text/template" id="teaserContentTemplate">
+<div class="jw-controls jw-reset">
+<div class="jw-display-icon-container jw-background-color jw-reset">
+<div class="jw-icon jw-icon-display loading jw-button-color jw-reset"></div>
+</div>
+<div class="jw-controlbar jw-background-color jw-reset">
+<div class="jw-group jw-controlbar-left-group jw-reset">
+<div class="jw-icon jw-icon-inline jw-button-color jw-reset <%= icon %>"></div>
+<div class="arte-vp-title"><span class="jw-text"><%= VTI %><% if(!_.isUndefined(subtitle) && !_.isNull(subtitle)) { %> - <%= subtitle %><% } %></span></div>
+</div>
+</div>
+</div></script>
+<script type="text/template" id="nextItemTemplate">
+<img src="<%= image %>" />
+<% if(!_.isNull(position)) { %><p><%= position %></p><% } %>
+<h1><%= VTI %></h1>
+</script>
+<script type="text/template" id="playlistItemInterstitial">
+<div class="interstitial-wrapper">
+<div class="interstitial-wrapper--subWrapper">
+<% if(!programUrl){ %>
+<p><%= nextVideo %></p>
+<% } %>
+<h1><%= VTI %><% if(!_.isUndefined(subtitle) && !_.isNull(subtitle)) { %> - <%= subtitle %><% } %></h1>
+<% if(playNext){ %>
+<div class="loader-wrapper">
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 400 400">
+<circle class="path" cx="50%" cy="50%" r="35%"></circle>
+</svg>
+<div class="jw-icon jw-icon-playback"></div>
+</div>
+<% } %>
+<% if(programUrl){ %>
+<a href="<%= programUrl %>"><%= buttonCode %></a>
+<% } %>
+</div>
+</div></script>
+<script type="text/template" id="pluginBadgeTemplate">
+<a href="<%= link %>"><%= text %></a></script>
+<script>
+var siteConfigs = {};
+siteConfigs ={"general":{"http_player_base_url":"http://www.arte.tv/player/v3/","https_player_base_url":"https://www.arte.tv/player/v3/","jwplayer_key":"Y8pA/oQhEQymMl5gDa64VpYsXTFMCQyTJTnF6w==","smil_gen_url":"webservices/playlist.smil","gen_thumbnails_vtt_url":"webservices/gen_thumbnails_vtt","gen_chapters_vtt_url":"webservices/gen_chapters_vtt","embed_base_player_code":"<iframe allowfullscreen=\"true\" style=\"transition-duration:0;transition-property:no;margin:0 auto;position:relative;display:block;background-color:#000000;\" frameborder=\"0\" scrolling=\"no\" width=\"%width%\" height=\"%height%\" src=\"%prefix%index.php?json_url=%json_url%&lang=%lang%&config=%config%&embed=%embed%&autostart=%autostart%&mute=%mute%\"></iframe>","embed_share_sizes":["100%x100%","720x406","640x360","320x180"],"embed_share_default_sizes":"720x406","chromecast_app_id":"4DEEFA11","json_refresh_default_interval":60,"preroll_vast_base_url":"https://adserver.adtech.de/?advideo/3.0/1419.1/4890007/0//cc=2;vidAS=pre_roll;vidRT=VAST;vidRTV=3.0;","preroll_vast_passed_parameter":["videoIsoLang","VTY","caseProgram","genre","VPI","programId","platform"],"preferred_mediaType":["hls","mp4","rtmp"],"shortDuration_preferred_mediaType":["mp4","hls","rtmp"],"favorite_enabled_kind":["TRAILER","PREFACE","TEASER","WEEKLY_TEASER","MONTHLY_TEASER","WEBROLL","TITLE_CARD","PROMOTION","PROMOTION_TOMORROW","PROMOTION_AFTERNOON","PROMOTION_EVENING","PROMOTION_SPECIAL","PRESENTATION","RENDEZ_VOUS","SOCIAL_NETWORK","SPOT","SHOW","BONUS","CLIP","MANUAL_CLIP"],"preferred_version":[1,2,3,4,5,6,7,8,9,10,11,12,null],"nielsen_stats":{"app_id":{"dev":"T95FFFEDB-BFD7-497B-8BF5-B26FEA79FC86","preprod":"T95FFFEDB-BFD7-497B-8BF5-B26FEA79FC86","prod":"P95FFFEDB-BFD7-497B-8BF5-B26FEA79FC86"}},"primary":"html5","serverside_json_cached":true,"twitter_hashtag":{"fr_FR":"","de_DE":"","en_US":"","es_ES":"","pl_PL":""},"twitter_via":{"fr_FR":"ARTEfr","de_DE":"ARTEde","en_US":"ARTEen","es_ES":"","pl_PL":""},"twitter_app_id_iphone":{"fr_FR":"405028510","de_DE":"405028510","en_US":"405028510","es_ES":"","pl_PL":""},"twitter_app_id_ipad":{"fr_FR":"405028510","de_DE":"405028510","en_US":"405028510","es_ES":"","pl_PL":""},"twitter_app_id_googleplay":{"fr_FR":"tv.arte.plus7","de_DE":"tv.arte.plus7","en_US":"tv.arte.plus7","es_ES":"","pl_PL":""},"twitter_app_name_iphone":{"fr_FR":"Application  ARTE  pour  iPhone","de_DE":"ARTE  App  für  iPhone","en_US":"Application  ARTE  pour  iPhone","es_ES":"","pl_PL":""},"twitter_app_name_ipad":{"fr_FR":"Application  ARTE  pour  iPad","de_DE":"ARTE  App  für  iPad","en_US":"Application  ARTE  pour  iPad","es_ES":"","pl_PL":""},"twitter_app_name_googleplay":{"fr_FR":"Application  ARTE  pour  Androïd","de_DE":"ARTE  App  für  Androïd","en_US":"Application  ARTE  pour  Androïd","es_ES":"","pl_PL":""},"twitter_app_url_iphone":{"fr_FR":"https://itunes.apple.com/fr/app/arte/id405028510?mt=8","de_DE":"https://itunes.apple.com/de/app/arte/id405028510?mt=8","en_US":"https://itunes.apple.com/fr/app/arte/id405028510?mt=8","es_ES":"","pl_PL":""},"twitter_app_url_ipad":{"fr_FR":"https://itunes.apple.com/fr/app/arte/id405028510?mt=8","de_DE":"https://itunes.apple.com/de/app/arte/id405028510?mt=8","en_US":"https://itunes.apple.com/fr/app/arte/id405028510?mt=8","es_ES":"","pl_PL":""},"twitter_app_url_googleplay":{"fr_FR":"https://play.google.com/store/apps/details?id=tv.arte.plus7&hl=fr","de_DE":"https://play.google.com/store/apps/details?id=tv.arte.plus7&hl=de","en_US":"https://play.google.com/store/apps/details?id=tv.arte.plus7&hl=fr","es_ES":"","pl_PL":""},"facebook_app_id":416821615179393,"xiti_xtsite":{"dev":581265,"preprod":581264,"prod":581264},"xiti_xtn2":1,"whitelisted_json_url_domains":["arte.tv"]},"sites":{"arte_chapters":{"serverside_json_cached":false},"arte_concert_live_admin":{"serverside_json_cached":false},"arte_m3i":{"serverside_json_cached":false},"arte_opera_live_admin":{"serverside_json_cached":false}}}
+var fullResStore = {
+'fr': {
+"translation": {
+"addedfavorite_button_title": "Ajouté",
+"avantpremieres_connect_msg": "Les avant-premières sont réservées aux membres du club.<br />Pour voir cette vidéo, inscrivez-vous gratuitement et découvrez tous les avantages.",
+"autostart": "Lecture automatique",
+"bad_live_config": "Vous n’avez pas la configuration requise pour visionner ce programme en direct.",
+"bad_replay_config": "Vous n’avez pas la configuration requise pour lire cette vidéo.",
+"chapter_add": "Ajouter",
+"chapter_add_chapter": "Ajout d'un chapitre",
+"chapter_chapters": "Chapitres",
+"chapter_delete": "Supprimer",
+"chapter_description": "Description",
+"chapter_duration": "Durée",
+"chapter_edit": "Editer",
+"chapter_edit_chapter": "Edition du chapitre",
+"chapter_save": "Enregistrer",
+"chapter_timecode": "Timecode",
+"chapter_title": "Titre",
+"chapters_list_save": "Clôturer",
+"countdown_start": "Disponible dans",
+"countdown_live_start": "En direct dans",
+"countdown_available_on": "Disponible le",
+"date_format_with_hour": "DD/MM [à] HH[h]mm",
+"date_format_short": "DD/MM",
+"error_availability_message": "Pas de vidéo disponible",
+"error_generic_title": "Erreur technique !",
+"error_location_message": "Cette vidéo n'est pas disponible dans votre pays.",
+"error_soon_availability_message": "Bientôt disponible",
+"favorite_button_title": "Ajouter à ma sélection",
+"favorite_complete_profile": "<p>Il manque des informations sur votre compte. Connectez vous à ARTE Club pour mettre à jour votre profil</p><p><a target='_parent' class='sso-button' href='__href__'>Se connecter</a></p>",
+"favorite_connect_msg": "Pour ajouter cette vidéo à votre sélection<br/><strong>connectez-vous à ARTE Club</strong>",
+"favorite_link_account": "<p>Vous avez déjà un profil ARTE. Connectez vous avec votre compte existant</p><p><a target='_parent' class='sso-button' href='__href__'>Se connecter</a></p>",
+"favorite_no_account_yet": "<p>Rejoignez ARTE Club pour pouvoir ajouter des vidéos à votre sélection.</p><p><a target='_parent' class='sso-button' href='__href__'>Ouvrir ARTE Club</a></p>",
+"format_countdown": "<div>%H<span>heures</span></div><em>:</em><div>%M<span>minutes</span></div><em>:</em><div>%S<span>secondes</span></div>",
+"format_countdown_final": "<div>%M<span>minutes</span></div><em>:</em><div>%S<span>secondes</span></div>",
+"iframe_text": "Iframe",
+"info_empty_postroll_message": "Désolé, il n'y a pas de recommandation en rapport avec cette vidéo pour le moment",
+"info_link_text": "Voir le programme",
+"info_label_live": "DIRECT",
+"info_plugin_date": "[Jusqu'au] DD/MM/YYYY",
+"info_plugin_datetime": "[Jusqu'au] DD/MM/YYYY à HH[h]mm",
+"info_plugin_datetime_text": "dddd DD MMMM [à] HH[h]mm",
+"infos_duration_minute": "{{duration}} min",
+"interstitial_next_video": "Programme suivant",
+"interstitial_see_complete_program_title": "Cette vidéo vous a plu ?",
+"interstitial_see_complete_program_button": "<button class='button'>Voir le programme</button>",
+"js_text": "Javascript",
+"live_starting_on": "En direct le",
+"loading_message": "Chargement...",
+"morality_question_check": "Attention, ce programme n'est pas adapté à un public mineur.<br /><strong>Avez-vous plus de 18 ans ?</strong>",
+"morality_response_no": "Annuler",
+"morality_response_yes": "Confirmer",
+"morality_sorry": "Nous sommes désolés vous n'avez pas l'âge requis pour consulter cette vidéo",
+"mute": "Désactiver le son",
+"playlist_button_title":"Playlist",
+"playlist_item_nbWithCount": "({{count}} vidéo)",
+"playlist_item_nbWithCount_plural": "({{count}} vidéos)",
+"playlist_next": "Vidéo suivante",
+"playlist_prev": "Vidéo précédente",
+"playlist_back_to_live": "Revenir au direct",
+"playlist_back_to_replay": "Revenir au début",
+"playlist_show_hour": "HH[h]mm",
+"playlist_program_of_the_day": "Les programmes du jour",
+"postroll_title_label": "Recommandations",
+"preroll_skipmessage": " XX sec.",
+"preroll_skiptest": "Passer",
+"preroll_waiting_message": " Annonce : votre vidéo commencera dans XX secondes.",
+"qualityMenu": "Qualité",
+"share_button_code": "Code",
+"share_size": "Taille",
+"share_options": "Options",
+"since": "[Depuis] HH[h]mm",
+"topdockbutton_embed": "Intégrer",
+"topdockbutton_share": "Partager",
+"unfavorite_button_title": "Enlever",
+"version_button_title": "Version",
+"videoWarning_message": "Attention, ce programme comporte des passages déconseillés aux personnes sensibles et aux plus jeunes.",
+"videoWarning_message_ok": "Poursuivre",
+"vodAvailable": "Ce programme est disponible en vidéo à la demande ou DVD"
+}
+},
+'de': {
+"translation": {
+"addedfavorite_button_title": "Hinzugefügt",
+"avantpremieres_connect_msg": "Werden Sie Mitglied im ARTE Club und nutzen Sie viele Vorteile:<br />Programme in Vorpremiere, exklusive Highlights, Video-Merkliste.<br/>Nein danke, <a id='continuePlaying'>weiter zum Video</a>.",
+"autostart": "Autoplay",
+"bad_live_config": "Ihre Einstellungen entsprechen nicht den Systemanforderungen um diesen Livestream zu sehen.",
+"bad_replay_config": "Ihre Einstellungen entsprechen nicht den Systemanforderungen um dieses Video zu sehen.",
+"chapter_add": "Hinzufügen",
+"chapter_add_chapter": "Ein Kapitel hinzufügen",
+"chapter_chapters": "Kapitel",
+"chapter_delete": "Löschen",
+"chapter_description": "Beschreibung",
+"chapter_duration": "Dauer",
+"chapter_edit": "Bearbeiten",
+"chapter_edit_chapter": "Kapitel bearbeiten",
+"chapter_save": "Speichern",
+"chapter_timecode": "Timecode",
+"chapter_title": "Titel",
+"chapters_list_save": "Beenden",
+"countdown_start": "Verfügbar in",
+"countdown_live_start":"Live in",
+"countdown_available_on":"Verfügbar am",
+"date_format_with_hour": "DD.MM [um] HH[.]mm [Uhr]",
+"date_format_short": "DD.MM",
+"error_availability_message": "Kein Video verfügbar",
+"error_generic_title": "Es tut uns leid.",
+"error_location_message": "Dieses Video ist in Ihrem Land nicht verfügbar.",
+"error_not_yet_availability_message": "Dieses Video ist noch nicht verfügbar",
+"error_soon_message": "Zu sehen ab dem",
+"error_soon_availability_message": "Demnächst verfügbar",
+"favorite_button_title": "Zu meiner Videoauswahl hinzufügen",
+"favorite_complete_profile": "<p>Es fehlen noch Informationen in Ihrem Profil. Loggen Sie sich im ARTE Club ein, um Ihr Profil zu vervollständigen.</p><p><a target='_parent' class='sso-button' href='__href__'>Einloggen</a></p>",
+"favorite_connect_msg": "Um dieses Video zu Ihrer Videoauswahl hinzuzufügen, <strong>melden Sie sich bitte beim ARTE Club an.</strong>",
+"favorite_link_account": "<p>Sie haben bereits ein ARTE-Profil. Loggen Sie sich mit Ihrem Konto ein.</p><p><a target='_parent' class='sso-button' href='__href__'>Einloggen</a></p>",
+"favorite_no_account_yet": "<p>Werden Sie Mitglied des ARTE Clubs, damit Sie Videos zu Ihrer Liste hinzufügen können.</p><p><a target='_parent' class='sso-button' href='__href__'>Zum ARTE Club</a></p>",
+"format_countdown": "<div>%H<span>Stunden</span></div><em>:</em><div>%M<span>Minuten</span></div><em>:</em><div>%S<span>Sekunden</span></div>",
+"format_countdown_final": "<div>%M<span>Minuten</span></div><em>:</em><div>%S<span>Sekunden</span></div>",
+"iframe_text": "iframe",
+"info_empty_postroll_message": "",
+"info_link_text": "Das Programm sehen",
+"info_label_live": "LIVE",
+"info_plugin_date": "[Bis] DD/MM/YYYY",
+"info_plugin_datetime": "[Bis] DD/MM/YYYY [um] HH[h]mm",
+"info_plugin_datetime_text": "dddd DD MMMM [um] HH[.]mm [Uhr]",
+"infos_duration_minute": "{{duration}} Min.",
+"interstitial_next_video": "Nächstes Programm",
+"interstitial_see_complete_program_title": "Interesse geweckt?",
+"interstitial_see_complete_program_button": "<button class='button'>Das Programm sehen</button>",
+"js_text": "Javascript",
+"live_starting_on": "Live am",
+"loading_message": "Lädt...",
+"morality_question_check": "Achtung! Dieses Video ist nicht für Jugendliche unter 18 Jahren geeignet.<br /><strong>Sind Sie 18 oder älter?<strong>",
+"morality_response_no": "Abbrechen",
+"morality_response_yes": "Bestätigen",
+"morality_sorry": "Es tut uns leid, aber Sie haben nicht das erforderliche Alter, um dieses Video zu sehen.",
+"mute": "Stummschalten",
+"playlist_button_title": "Playlist",
+"playlist_item_nbWithCount": "({{count}} Video)",
+"playlist_item_nbWithCount_plural": "({{count}} Videos)",
+"playlist_next": "Nächstes Video",
+"playlist_prev": "Vorheriges Video",
+"playlist_back_to_live": "Zurück zum Live",
+"playlist_back_to_replay": "Zum Anfang",
+"playlist_show_hour": "HH[.]mm [Uhr]",
+"playlist_program_of_the_day": "Programme des Tages",
+"postroll_title_label": "Empfehlungen",
+"preroll_skipmessage": " XX Sek.",
+"preroll_skiptest": "Zum Video",
+"preroll_waiting_message": " Ihr Video startet in XX Sekunden.",
+"qualityMenu": "Qualität",
+"share_button_code": "Code",
+"share_size": "Größe",
+"share_options": "Optionen",
+"since": "[Seit] HH[.]mm [Uhr]",
+"topdockbutton_embed": "Einbetten",
+"topdockbutton_share": "Teilen",
+"unfavorite_button_title": "Löschen",
+"version_button_title": "Sprachauswahl",
+"videoWarning_message": "Achtung, diese Sendung enthält Passagen, die empfindsame oder junge Zuschauer schockieren können.",
+"videoWarning_message_ok": "Weiter",
+"vodAvailable": ""
+}
+},
+'es': {
+"translation": {
+"addedfavorite_button_title": "",
+"avantpremieres_connect_msg": "",
+"autostart": "Lectura automática",
+"bad_live_config": "Lo sentimos, pero no tiene la configuración adecuada para ver este programa en directo.",
+"bad_replay_config": "Lo sentimos, pero no tiene la configuración adecuada para reproducir este vídeo.",
+"chapter_add": "Añadir",
+"chapter_add_chapter": "Se ha añadido un capítulo",
+"chapter_chapters": "Capítulos",
+"chapter_delete": "Eliminar",
+"chapter_description": "Descripción",
+"chapter_duration": "Duración",
+"chapter_edit": "Editar",
+"chapter_edit_chapter": "Edición del capítulo",
+"chapter_save": "Grabar",
+"chapter_timecode": "Código de tiempo",
+"chapter_title": "Título",
+"chapters_list_save": "Cerrar",
+"countdown_start": "Disponible en",
+"countdown_live_start":"En directo en",
+"countdown_available_on":"Disponible el",
+"date_format_with_hour": "DD/MM [a las] HH[:]mm",
+"date_format_short": "DD/MM",
+"error_availability_message": "Ningún vídeo disponible",
+"error_generic_title": "¡Error técnico!",
+"error_location_message": "Este vídeo no está disponible en su país.",
+"error_not_yet_availability_message": "Este vídeo no está disponible todavía.",
+"error_soon_message": "Podrá visionarlo a partir del",
+"error_soon_availability_message": "Pronto disponible",
+"favorite_button_title": "Ajouter à ma sélection",
+"favorite_complete_profile": "",
+"favorite_connect_msg": "",
+"favorite_link_account": "",
+"favorite_no_account_yet": "",
+"format_countdown": "<div>%H<span>horas</span></div><em>:</em><div>%M<span>minutos</span></div><em>:</em><div>%S<span>segundos</span></div>",
+"format_countdown_final": "<div>%M<span>minutos</span></div><em>:</em><div>%S<span>segundos</span></div>",
+"iframe_text": "iframe",
+"info_empty_postroll_message": "Désolé, il n'y a pas de recommandation en rapport avec cette vidéo pour le moment",
+"info_link_text": "Ver el programa",
+"info_label_live": "EN DIRECTO",
+"info_plugin_date": "[Hasta] DD/MM/YYYY",
+"info_plugin_datetime": "[Hasta] DD/MM/YYYY [a las] HH[h]mm",
+"info_plugin_datetime_text": "dddd DD MMMM [a las] HH[h]mm",
+"infos_duration_minute": "{{duration}} min",
+"interstitial_next_video": "Próximo programa",
+"interstitial_see_complete_program_title": "¿Te ha gustado?",
+"interstitial_see_complete_program_button": "<button class='button'>Ver el programa</button>",
+"js_text": "Javascript",
+"live_starting_on": "En directo el",
+"loading_message": "Cargando...",
+"morality_question_check": "Advertencia: este programa no es adecuado para un público menor de edad. <br /><strong> ¿Tiene más de 18 años?</strong>",
+"morality_response_no": "Cancelar",
+"morality_response_yes": "Confirmar",
+"morality_sorry": "Lo sentimos, pero no tiene la edad requerida para ver el vídeo",
+"mute": "Desactivar el sonido",
+"playlist_item_nbWithCount": "({{count}} vídeo)",
+"playlist_item_nbWithCount_plural": "({{count}} vídeos)",
+"playlist_next": "",
+"playlist_prev": "",
+"playlist_back_to_live": "Volver al directo",
+"playlist_back_to_replay": "Volver",
+"playlist_show_hour": "HH[h]mm",
+"playlist_program_of_the_day": "Los programas del día",
+"postroll_title_label": "Recomendaciones",
+"preroll_skipmessage": "XX s",
+"preroll_skiptest": "Pasar",
+"preroll_waiting_message": "Anuncio: El vídeo comenzará en XX segundos.",
+"qualityMenu": "Calidad",
+"share_button_code": "Código",
+"share_size": "Tamaño",
+"share_options": "Opciones",
+"since": "",
+"topdockbutton_embed": "Incrustar",
+"topdockbutton_share": "Compartir",
+"unfavorite_button_title": "",
+"version_button_title": "Versión",
+"videoWarning_message": "Advertencia: este programa no es apto para personas sensibles o menores.",
+"videoWarning_message_ok": "Continuar",
+"vodAvailable": ""
+}
+},
+'pl': {
+"translation": {
+"addedfavorite_button_title": "",
+"avantpremieres_connect_msg": "",
+"autostart": "Automatyczne odtwarzanie",
+"bad_live_config": "Nie masz wymaganych ustawień niezbędnych do oglądania tego programu na żywo.",
+"bad_replay_config": "Nie masz wymaganych ustawień niezbędnych do oglądania tego wideo.",
+"chapter_add": "Dodaj",
+"chapter_add_chapter": "Dodaj rozdział",
+"chapter_chapters": "Rozdziały",
+"chapter_delete": "Usuń",
+"chapter_description": "Opis",
+"chapter_duration": "Długość",
+"chapter_edit": "Edycja",
+"chapter_edit_chapter": "Edytuj rozdział",
+"chapter_save": "Zapisz",
+"chapter_timecode": "Kod czasowy",
+"chapter_title": "Tytuł",
+"chapters_list_save": "Zakończ",
+"countdown_start": "Dostępny za",
+"countdown_live_start":"Dostępny na żywo za",
+"countdown_available_on":"Dostępny",
+"date_format_with_hour": "DD/MM [o] HH[:]mm",
+"date_format_short": "DD/MM",
+"error_availability_message": "Wideo nie jest dostępne",
+"error_generic_title": "Błąd techniczny.",
+"error_location_message": "To wideo nie jest dostępne w Twojej obecnej lokalizacji.",
+"error_not_yet_availability_message": "To wideo nie jest jeszcze dostępne.",
+"error_soon_message": "Będzie można obejrzeć je od",
+"error_soon_availability_message": "Wkrótce dostępny",
+"favorite_button_title": "",
+"favorite_complete_profile": "",
+"favorite_connect_msg": "",
+"favorite_link_account": "",
+"favorite_no_account_yet": "",
+"format_countdown": "<div>%H<span>godzin</span></div><em>:</em><div>%M<span>minut</span></div><em>:</em><div>%S<span>sekund</span></div>",
+"format_countdown_final": "<div>%M<span>minut</span></div><em>:</em><div>%S<span>sekund</span></div>",
+"iframe_text": "Iframe",
+"info_empty_postroll_message": "",
+"info_link_text": "Zobacz program",
+"info_label_live": "DIRECT",
+"info_plugin_date": "[Do] DD/MM/YYYY",
+"info_plugin_datetime": "[Do] DD/MM/YYYY. hh[:]mm",
+"info_plugin_datetime_text": "dddd DD MMMM. HH[:]mm",
+"infos_duration_minute": "{{duration}} min.",
+"interstitial_next_video": "Następny program",
+"interstitial_see_complete_program_title": "Podobał Ci się ten wideo?",
+"interstitial_see_complete_program_button": "<button class='button'>Zobacz program</button>",
+"js_text": "JavaScript",
+"live_starting_on": "Dostępny na żywo",
+"loading_message": "Ładowanie...",
+"morality_question_check": "Uwaga: ten program nie jest odpowiedni dla osób poniżej 18 roku życia.<br /><strong>Czy masz co najmniej 18 lat?</strong>",
+"morality_response_no": "Nie",
+"morality_response_yes": "Tak",
+"morality_sorry": "Przepraszamy, jesteś zbyt młody/a by obejrzeć ten program.",
+"mute": "Wyłącz dźwięk",
+"playlist_item_nbWithCount": "({{count}} wideo)",
+"playlist_item_nbWithCount_plural": "({{count}} wideos)",
+"playlist_next": "",
+"playlist_prev": "",
+"playlist_back_to_live": "Powrót do programu na żywo",
+"playlist_back_to_replay": "Odtwórz ponownie",
+"playlist_show_hour": "",
+"playlist_program_of_the_day": "Programy dnia",
+"postroll_title_label": "Rekomendacje",
+"preroll_skipmessage": "XX sek.",
+"preroll_skiptest": "Pomiń",
+"preroll_waiting_message": "Twoje wideo wystartuje za XX sekund.",
+"qualityMenu": "Jakość",
+"share_button_code": "Kod",
+"share_size": "Rozmiar",
+"share_options": "Opcje",
+"since": "Depuis {{sinceDate}}",
+"topdockbutton_embed": "Osadź na stronie",
+"topdockbutton_share": "Udostępnij",
+"unfavorite_button_title": "Enlever",
+"version_button_title": "Wersja",
+"videoWarning_message": "Ostrzeżenie: ten program zawiera brutalne treści, które mogą urazić niektórych widzów",
+"videoWarning_message_ok": "Rozumiem",
+"vodAvailable": ""
+}
+},
+'en': {
+"translation": {
+"addedfavorite_button_title": "",
+"avantpremieres_connect_msg": "",
+"autostart": "Autoplay",
+"bad_live_config": "You don’t have the minimum configurations required to live stream this programme.",
+"bad_replay_config": "You don’t have the minimum configurations required to play this video.",
+"chapter_add": "Add",
+"chapter_add_chapter": "Add a chapter",
+"chapter_chapters": "Chapters",
+"chapter_delete": "Remove",
+"chapter_description": "Description",
+"chapter_duration": "Length",
+"chapter_edit": "Edit",
+"chapter_edit_chapter": "Edit chapter",
+"chapter_save": "Save",
+"chapter_timecode": "Timecode",
+"chapter_title": "Title",
+"chapters_list_save": "Finish",
+"countdown_start": "Available in",
+"countdown_live_start":"Live in",
+"countdown_available_on":"Available on",
+"date_format_with_hour": "DD/MM [at] HH[:]mm",
+"date_format_short": "DD/MM",
+"error_availability_message": "No video available",
+"error_generic_title": "Technical error !",
+"error_location_message": "This video cannot be viewed from your current location.",
+"error_not_yet_availability_message": "This video is not yet available.",
+"error_soon_message": "You will able to watch it from",
+"error_soon_availability_message": "Available shortly",
+"favorite_button_title": "Ajouter à ma sélection",
+"favorite_complete_profile": "",
+"favorite_connect_msg": "",
+"favorite_link_account": "",
+"favorite_no_account_yet": "",
+"format_countdown": "<div>%H<span>hours</span></div><em>:</em><div>%M<span>minutes</span></div><em>:</em><div>%S<span>seconds</span></div>",
+"format_countdown_final": "<div>%M<span>minutes</span></div><em>:</em><div>%S<span>seconds</span></div>",
+"iframe_text": "iframe",
+"info_empty_postroll_message": "",
+"info_link_text": "Watch the programme",
+"info_label_live": "LIVE",
+"info_plugin_date": "[Until] DD/MM/YYYY",
+"info_plugin_datetime": "[Until] DD/MM/YYYY at HH[h]mm",
+"info_plugin_datetime_text": "dddd DD MMMM [at] HH[h]mm",
+"infos_duration_minute": "{{duration}} min",
+"interstitial_next_video": "Next programme",
+"interstitial_see_complete_program_title": "Did you like this video?",
+"interstitial_see_complete_program_button": "<button class='button'>Watch the programme</button>",
+"js_text": "Javascript",
+"live_starting_on": "Live on",
+"loading_message": "Loading...",
+"morality_question_check": "Warning : This programme is not suitable for people under 18.<br /><strong>Are you at least 18 years old?</strong>",
+"morality_response_no": "No",
+"morality_response_yes": "Yes",
+"morality_sorry": "Sorry you are not old enough to view this content.",
+"mute": "Disable sound",
+"playlist_button_title": "Playlist",
+"playlist_item_nbWithCount": "({{count}} video)",
+"playlist_item_nbWithCount_plural": "({{count}} videos)",
+"playlist_next": "",
+"playlist_prev": "",
+"playlist_back_to_live": "Return to live streaming",
+"playlist_back_to_replay": "Restart",
+"playlist_show_hour": "",
+"playlist_program_of_the_day": "Today's programmes",
+"postroll_title_label": "Recommandations",
+"preroll_skipmessage": " XX sec.",
+"preroll_skiptest": "Skip",
+"preroll_waiting_message": " Your video will start in XX seconds.",
+"qualityMenu": "Quality",
+"share_button_code": "Code",
+"share_size": "Size",
+"share_options": "Options",
+"since": "",
+"topdockbutton_embed": "Embed",
+"topdockbutton_share": "Share",
+"unfavorite_button_title": "Remove",
+"version_button_title": "Version",
+"videoWarning_message": "Warning: this programme contains violent or explicit content",
+"videoWarning_message_ok": "I understand",
+"vodAvailable": ""
+}
+}	};
+var js_json = {"videoJsonPlayer":{"VID":"072443-000-A","VPI":"072443-000","videoDurationSeconds":5017,"videoIsoLang":"fr_FR","VTY":"ARTE_NEXT","VTX":"ARTE","VTI":"V\u00e9nus : confessions \u00e0 nues","VDU":84,"tc_start_from":0,"autostart":true,"liveStreamRights":true,"VGB":"EUR_DE_FR","VRA":"09\/11\/2017 15:11:00 +0000","VRU":"12\/11\/2019 22:59:00 +0000","VAD":false,"videoWarning":false,"VTU":{"IUR":"https:\/\/static-cdn.arte.tv\/resize\/BcngRz5ShV_iEan_2qEp_B18FUo=\/940x530\/smart\/filters:strip_icc()\/apios\/Img_data\/21\/072443-000-A_2188165.jpg"},"VTR":"https:\/\/www.arte.tv\/fr\/videos\/072443-000-A\/venus-confessions-a-nues\/","VUP":"https:\/\/www.arte.tv\/fr\/videos\/072443-000-A\/venus-confessions-a-nues\/","V7T":"Dans un studio improvis\u00e9, face \u00e0 la cam\u00e9ra, des jeunes femmes parlent sans d\u00e9tour du sexe, du d\u00e9sir, de la frustration. Un film choral d'une intimit\u00e9 absolue et troublante.\n","VDE":"Au Danemark, deux r\u00e9alisatrices trentenaires lancent un appel \u00e0 casting f\u00e9minin pour un film \u00e9rotique bas\u00e9 sur des exp\u00e9riences r\u00e9elles. Une centaine de candidates, de leur \u00e2ge ou plus jeunes, r\u00e9pondent spontan\u00e9ment \u00e0 l\u2019annonce. Dans un studio improvis\u00e9, les auditions commencent sous forme de dialogues entre les filmeuses et celles qui leur font face, une \u00e0 une. Mais le dispositif du casting prend la tournure impr\u00e9visible d'une agora, les jeunes femmes interrog\u00e9es s'emparant des questions pos\u00e9es pour s'exprimer sans d\u00e9tour ni fausse honte sur leur exp\u00e9rience et leur perception de la sexualit\u00e9. Le flot choral de leurs r\u00e9cits et \"confessions\", mais aussi ce que racontent leurs visages, leurs gestes, et parfois le corps qu'elles d\u00e9nudent devant la cam\u00e9ra, dessinent peu \u00e0 peu un \u00e9tat des lieux collectif : la vie sexuelle d'une nouvelle g\u00e9n\u00e9ration de femmes, d\u00e9cid\u00e9e \u00e0 vivre et assumer son d\u00e9sir et sa libert\u00e9, mais consciente des obstacles qui les entravent parfois.\nDans cet effeuillage jamais voyeur, ni \u00e9grillard ni exhibitionniste, o\u00f9 la sinc\u00e9rit\u00e9 de la parole est essentielle, le regard direct du documentaire donne lieu \u00e0 un film subtilement \u00e9rotique, tiss\u00e9 de crudit\u00e9 et de pudeur, de myst\u00e8re et d'humour, de s\u00e9duction et d'audace, qui tend \u00e0 chacun, femme ou homme, jeune ou vieux, un troublant miroir.\n","postroll":"https:\/\/api.arte.tv\/api\/player\/v1\/recommendedPostroll\/fr\/072443-000-A","VSR":{"HTTPS_MQ_2":{"id":"HTTPS_MQ_2","quality":"MQ","width":384,"height":216,"mediaType":"mp4","mimeType":"video\/mp4","bitrate":300,"url":"https:\/\/arteptweb-a.akamaihd.net\/am\/ptweb\/072000\/072400\/072443-000-A_MQ_0_VO-STA_03345338_MP4-300_AMM-PTWEB_rUm81D3vzx.mp4","versionProg":2,"versionCode":"VO-STA","versionLibelle":"Allemand (sous-titres)","versionShortLibelle":"VOSTA"},"HTTPS_EQ_2":{"id":"HTTPS_EQ_2","quality":"EQ","width":720,"height":406,"mediaType":"mp4","mimeType":"video\/mp4","bitrate":1500,"url":"https:\/\/arteptweb-a.akamaihd.net\/am\/ptweb\/072000\/072400\/072443-000-A_EQ_0_VO-STA_03345339_MP4-1500_AMM-PTWEB_rUn51D3w4p.mp4","versionProg":2,"versionCode":"VO-STA","versionLibelle":"Allemand (sous-titres)","versionShortLibelle":"VOSTA"},"HTTPS_HQ_2":{"id":"HTTPS_HQ_2","quality":"HQ","width":640,"height":360,"mediaType":"mp4","mimeType":"video\/mp4","bitrate":800,"url":"https:\/\/arteptweb-a.akamaihd.net\/am\/ptweb\/072000\/072400\/072443-000-A_HQ_0_VO-STA_03345341_MP4-800_AMM-PTWEB_rUoE1D3wCU.mp4","versionProg":2,"versionCode":"VO-STA","versionLibelle":"Allemand (sous-titres)","versionShortLibelle":"VOSTA"},"HTTPS_SQ_2":{"id":"HTTPS_SQ_2","quality":"SQ","width":1280,"height":720,"mediaType":"mp4","mimeType":"video\/mp4","bitrate":2200,"url":"https:\/\/arteptweb-a.akamaihd.net\/am\/ptweb\/072000\/072400\/072443-000-A_SQ_0_VO-STA_03345340_MP4-2200_AMM-PTWEB_rUoi1D3wKT.mp4","versionProg":2,"versionCode":"VO-STA","versionLibelle":"Allemand (sous-titres)","versionShortLibelle":"VOSTA"},"HLS_XQ_2":{"id":"HLS_XQ_2","quality":"XQ","width":1280,"height":720,"mediaType":"hls","mimeType":"application\/vnd.apple.mpegurl","bitrate":2200,"url":"https:\/\/arteptweb-vh.akamaihd.net\/i\/am\/ptweb\/072000\/072400\/072443-000-A_0_VO-STA_AMM-PTWEB_XQ.rUoi1D3wid.smil\/master.m3u8","versionProg":2,"versionCode":"VO-STA","versionLibelle":"Allemand (sous-titres)","versionShortLibelle":"VOSTA"},"HTTPS_MQ_1":{"id":"HTTPS_MQ_1","quality":"MQ","width":384,"height":216,"mediaType":"mp4","mimeType":"video\/mp4","bitrate":300,"url":"https:\/\/arteptweb-a.akamaihd.net\/am\/ptweb\/072000\/072400\/072443-000-A_MQ_0_VO-STF_03345342_MP4-300_AMM-PTWEB_rUqL1D3wXT.mp4","versionProg":1,"versionCode":"VO-STF","versionLibelle":"Fran\u00e7ais (sous-titres)","versionShortLibelle":"VOSTF"},"HTTPS_EQ_1":{"id":"HTTPS_EQ_1","quality":"EQ","width":720,"height":406,"mediaType":"mp4","mimeType":"video\/mp4","bitrate":1500,"url":"https:\/\/arteptweb-a.akamaihd.net\/am\/ptweb\/072000\/072400\/072443-000-A_EQ_0_VO-STF_03345343_MP4-1500_AMM-PTWEB_rUqM1D3wZH.mp4","versionProg":1,"versionCode":"VO-STF","versionLibelle":"Fran\u00e7ais (sous-titres)","versionShortLibelle":"VOSTF"},"HTTPS_HQ_1":{"id":"HTTPS_HQ_1","quality":"HQ","width":640,"height":360,"mediaType":"mp4","mimeType":"video\/mp4","bitrate":800,"url":"https:\/\/arteptweb-a.akamaihd.net\/am\/ptweb\/072000\/072400\/072443-000-A_HQ_0_VO-STF_03345345_MP4-800_AMM-PTWEB_rUrD1D3whs.mp4","versionProg":1,"versionCode":"VO-STF","versionLibelle":"Fran\u00e7ais (sous-titres)","versionShortLibelle":"VOSTF"},"HTTPS_SQ_1":{"id":"HTTPS_SQ_1","quality":"SQ","width":1280,"height":720,"mediaType":"mp4","mimeType":"video\/mp4","bitrate":2200,"url":"https:\/\/arteptweb-a.akamaihd.net\/am\/ptweb\/072000\/072400\/072443-000-A_SQ_0_VO-STF_03345344_MP4-2200_AMM-PTWEB_rUu91D3y1g.mp4","versionProg":1,"versionCode":"VO-STF","versionLibelle":"Fran\u00e7ais (sous-titres)","versionShortLibelle":"VOSTF"},"HLS_XQ_1":{"id":"HLS_XQ_1","quality":"XQ","width":1280,"height":720,"mediaType":"hls","mimeType":"application\/vnd.apple.mpegurl","bitrate":2200,"url":"https:\/\/arteptweb-vh.akamaihd.net\/i\/am\/ptweb\/072000\/072400\/072443-000-A_0_VO-STF_AMM-PTWEB_XQ.rUu91D3yJH.smil\/master.m3u8","versionProg":1,"versionCode":"VO-STF","versionLibelle":"Fran\u00e7ais (sous-titres)","versionShortLibelle":"VOSTF"}},"tracking":{"tablet":{"WEB":"https:\/\/st.arte.tv\/api\/multimedia\/v1\/072443-000\/A\/fr\/ARTE_NEXT\/TABLET\/WEB\/pixel.gif"},"desktop":{"WEB":"https:\/\/st.arte.tv\/api\/multimedia\/v1\/072443-000\/A\/fr\/ARTE_NEXT\/DESKTOP\/WEB\/pixel.gif"},"mobile":{"WEB":"https:\/\/st.arte.tv\/api\/multimedia\/v1\/072443-000\/A\/fr\/ARTE_NEXT\/MOBILE\/WEB\/pixel.gif"}},"platform":"ARTE_NEXT","videoPlayerUrl":"https:\/\/api.arte.tv\/api\/player\/v1\/config\/fr\/072443-000-A?autostart=1","caseProgram":"113_lucarne","categories":[{"code":"ACT","name":"Actu & soci\u00e9t\u00e9"}],"category":{"code":"ACT","name":"Actu et soci\u00e9t\u00e9"},"subcategory":{"code":"AUV","name":"Autrement vu"},"language":"fr","programId":"072443-000-A","genre":"2_Documentaire","mainPlatformCode":"INFO","VSO":"replay","kind":"SHOW","kindLabel":"PROGRAMME","collections":[],"arteClub":false,"programType":"BROADCAST","parentProgramId":"072443-000-A","markings":[{"code":"CREATIVE","label":"CREATIVE"}]}};
+var js_json_playlist = '';
+var lang = 'fr_FR';
+var config_name = '';
+var json_url = 'https://api.arte.tv/api/player/v1/config/fr/072443-000-A?autostart=1&lifeCycle=1';
+var json_playlist_url = '';
+</script>
+<script>
+var arte_vp_version = '3.26.2';
+window.Promise||document.write('<script src="https://cdn.polyfill.io/v2/polyfill.min.js"><\/script>');
+</script>
+<script src="https://static-cdn.arte.tv/player/v3//build/js/app.bundle.js?ver=3.26.2-7d042a8f5f213e2448dd"></script>
+<script src='//cdn-gl.imrworldwide.com/novms/js/2/ggcmb510.js'></script>
+</body></html>

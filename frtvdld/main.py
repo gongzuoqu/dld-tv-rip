@@ -22,7 +22,8 @@ import re
 import sys
 
 from ColorFormatter import ColorFormatter
-from PluzzDL import PluzzDL
+from francetv.FranceTvDownloader import FranceTvDownloader
+from Navigateur import FakeAgent
 
 #
 # Main
@@ -50,17 +51,13 @@ if (__name__ == "__main__"):
     parser = argparse.ArgumentParser(usage=usage, description="Télécharge les émissions de Pluzz")
     parser.add_argument("-b", "--progressbar", action="store_true", default=False,
                         help='affiche la progression du téléchargement')
-    parser.add_argument("-p", "--proxy", dest="proxy", metavar="PROXY",
-                        help='utilise un proxy HTTP au format suivant http://URL:PORT')
-    parser.add_argument("-s", "--sock", action="store_true", default=False,
-                        help='si un proxy est fourni avec l\'option -p, un proxy SOCKS5 est utilisé au format suivant ADRESSE:PORT')
     parser.add_argument("-v", "--verbose", action="store_true", default=False,
                         help='affiche les informations de debugage')
     parser.add_argument("-t", "--soustitres", action="store_true", default=False,
                         help='récupère le fichier de sous-titres de la vidéo (si disponible)')
 
     parser.add_argument("-o", "--outDir", action="store", default=None, help='output folder (default .)')
-    parser.add_argument("-x", "--extractedUrl", action="store_true", default=False, help='extract Selection URL (france.tv)')
+    # parser.add_argument("-x", "--extractedUrl", action="store_true", default=False, help='extract Selection URL (france.tv)')
 
     parser.add_argument("--nocolor", action='store_true', default=False, help='désactive la couleur dans le terminal')
     parser.add_argument("--version", action='version', version="pluzzdl %s" % (__version__))
@@ -68,7 +65,7 @@ if (__name__ == "__main__"):
     args = parser.parse_args()
 
     # Mise en place du logger
-    logger = logging.getLogger("pluzzdl")
+    logger = logging.getLogger("frtvdld")
     console = logging.StreamHandler(sys.stdout)
     if (args.verbose):
         logger.setLevel(logging.DEBUG)
@@ -80,23 +77,23 @@ if (__name__ == "__main__"):
     logger.addHandler(console)
 
     # Affiche des infos sur le systeme
-    logger.debug("pluzzdl %s avec Python %s (%s)" % (__version__, platform.python_version(), platform.machine()))
+    logger.debug("frtvdld %s with Python %s (%s)" % (__version__, platform.python_version(), platform.machine()))
     logger.debug("OS : %s %s" % (platform.system(), platform.version()))
 
     # if (re.match("https://www.france.tv/[^\.]+?\.html", args.urlEmission) is None):
     #     logger.error("L'URL \"%s\" n'est pas valide" % (args.urlEmission))
     #     sys.exit(-1)
 
-    # Verification du proxy
-    if (args.proxy is not None):
-        if (args.sock):
-            if (re.match('[0-9]+(?:\.[0-9]+){3}:[0-9]+', args.proxy) is None):
-                logger.error("Le proxy SOCK \"%s\" n'est pas valide" % (args.proxy))
-                sys.exit(-1)
-        else:
-            if (re.match("http://[^:]+?:\d+", args.proxy) is None):
-                logger.error("Le proxy HTML \"%s\" n'est pas valide" % (args.proxy))
-                sys.exit(-1)
+    # # Verification du proxy
+    # if (args.proxy is not None):
+    #     if (args.sock):
+    #         if (re.match('[0-9]+(?:\.[0-9]+){3}:[0-9]+', args.proxy) is None):
+    #             logger.error("Le proxy SOCK \"%s\" n'est pas valide" % (args.proxy))
+    #             sys.exit(-1)
+    #     else:
+    #         if (re.match("http://[^:]+?:\d+", args.proxy) is None):
+    #             logger.error("Le proxy HTML \"%s\" n'est pas valide" % (args.proxy))
+    #             sys.exit(-1)
 
     # Fonction d'affichage de l'avancement du téléchargement
     if (args.progressbar):
@@ -104,19 +101,32 @@ if (__name__ == "__main__"):
     else:
         progressFnct = lambda x: None
 
-    # extract target url from Emission page
-    if (args.extractedUrl):
-        target = ExtractUrl(args.urlEmission)
-    else:
-        target = args.urlEmission
+    # # extract target url from Emission page
+    # if (args.extractedUrl):
+    #     target = ExtractUrl(args.urlEmission)
+    # else:
+    #     target = args.urlEmission
 
     # logger.info( args.urlEmission )
     # logger.info( args.proxy)
     # logger.info(  args.sock )
     # Telechargement de la video
-    PluzzDL(url=target,
-            proxy=args.proxy,
-            proxySock=args.sock,
+    # PluzzDL(url=target,
+    #         proxy=args.proxy,
+    #         proxySock=args.sock,
+    #         sousTitres=args.soustitres,
+    #         progressFnct=progressFnct,
+    #         outDir=args.outDir)
+
+    FranceTvDownloader(url=args.urlEmission,
+            fakeAgent=FakeAgent(),
             sousTitres=args.soustitres,
             progressFnct=progressFnct,
             outDir=args.outDir)
+
+    # ArteDownloader(url=target,
+    #         proxy=args.proxy,
+    #         proxySock=args.sock,
+    #         sousTitres=args.soustitres,
+    #         progressFnct=progressFnct,
+    #         outDir=args.outDir)

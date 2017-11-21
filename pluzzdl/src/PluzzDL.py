@@ -10,28 +10,20 @@
 # Modules
 #
 
-import base64
 import BeautifulSoup
-import binascii
 import datetime
-import hashlib
-import hmac
 import os
-import re
-import StringIO
-import struct
 import threading
 import time
-import urllib
-import urllib2
 import xml.etree.ElementTree
 import xml.sax
-import zlib
 import json
 
-from Configuration import Configuration
-from Historique import Historique, Video
-from Navigateur import Navigateur
+from Navigateur import Navigateur, FakeAgent
+from PluzzDLException import PluzzDLException
+#from Downloader import PluzzDLM3U8, PluzzDLF4M, PluzzDLMMS, PluzzDLRTMP
+from Downloader import PluzzDLM3U8
+
 
 import logging
 
@@ -44,10 +36,10 @@ logger = logging.getLogger("pluzzdl")
 
 class PluzzDL(object):
     """
-	Classe principale pour lancer un telechargement
-	"""
+    Classe principale pour lancer un telechargement
+    """
 
-    DATA_MAIN_VIDEO= 'data-main-video="([0-9][a-z]-)*"'
+    DATA_MAIN_VIDEO = 'data-main-video="([0-9][a-z]-)*"'
     REGEX_ID = "http://info.francetelevisions.fr/\?id-video=([^\"]+)"
     XML_DESCRIPTION = "http://www.pluzz.fr/appftv/webservices/video/getInfosOeuvre.php?mode=zeri&id-diffusion=_ID_EMISSION_"
     JSON_DESCRIPTION = "http://webservices.francetelevisions.fr/tools/getInfosOeuvre/v2/?idDiffusion=_ID_EMISSION_&catalogue=Pluzz"
@@ -55,6 +47,8 @@ class PluzzDL(object):
     M3U8_LINK = "http://medias2.francetv.fr/catchup-mobile/france-dom-tom/non-token/non-drm/m3u8/_FILE_NAME_.m3u8"
     REGEX_M3U8 = "/([0-9]{4}/S[0-9]{2}/J[0-9]{1}/[0-9]*-[0-9]{6,8})-"
 
+#  http://webservices.francetelevisions.fr/tools/getInfosOeuvre/v2/?idDiffusion=166810096&catalogue=Pluzz
+# http://www.pluzz.fr/appftv/webservices/video/getInfosOeuvre.php?mode=zeri&id-diffusion=166810096
     def __init__(self,
                  url,  # URL de la video
                  proxy=None,  # Proxy a utiliser
@@ -66,6 +60,8 @@ class PluzzDL(object):
                  ):
         # Classe pour telecharger des fichiers
         self.navigateur = Navigateur(proxy, proxySock)
+        self.fakeAgent = FakeAgent()
+
         # Infos video recuperees dans le XML
         self.id = None
         self.lienMMS = None
@@ -80,14 +76,21 @@ class PluzzDL(object):
         # Recupere l'id de l'emission
         idEmission = self.getId(url)
         # Recupere la page d'infos de l'emission
-        try:
-            pageInfos = self.navigateur.getFichier(self.XML_DESCRIPTION.replace("_ID_EMISSION_", idEmission))
-            # Parse la page d'infos
-            self.parseInfos(pageInfos)
-        except:
-            logger.debug("Problème avec le fichier XML, récupération du JSON")
-            pageInfos = self.navigateur.getFichier(self.JSON_DESCRIPTION.replace("_ID_EMISSION_", idEmission))
-            self.parseInfosJSON(pageInfos)
+        # try:
+        #     # pageInfos = self.navigateur.getFichier(self.XML_DESCRIPTION.replace("_ID_EMISSION_", idEmission))
+        #     pageInfos = self.fakeAgent.readPage(self.XML_DESCRIPTION.replace("_ID_EMISSION_", idEmission))
+        #     # Parse la page d'infos
+        #     self.parseInfos(pageInfos)
+        # except:
+        #     logger.debug("Problème avec le fichier XML, récupération du JSON")
+        #     # pageInfos = self.navigateur.getFichier(self.JSON_DESCRIPTION.replace("_ID_EMISSION_", idEmission))
+        #     pageInfos = self.fakeAgent.readPage(self.JSON_DESCRIPTION.replace("_ID_EMISSION_", idEmission))
+        #     self.parseInfosJSON(pageInfos)
+
+        # go for JSON straight, don't eventry XML
+        pageInfos = self.fakeAgent.readPage(self.JSON_DESCRIPTION.replace("_ID_EMISSION_", idEmission))
+        self.parseInfosJSON(pageInfos)
+        
         # Petit message en cas de DRM
         if (self.drm):
             logger.warning("La vidéo posséde un DRM ; elle sera sans doute illisible")
@@ -124,19 +127,20 @@ class PluzzDL(object):
 
     def getId(self, url):
         """
-		Recupere l'ID de la video a partir de son URL
-		"""
+        Recupere l'ID de la video a partir de son URL
+        """
         # try :
-        page = self.navigateur.getFichier(url)
+        # page = self.navigateur.getFichier(url)
+        page = self.fakeAgent.readPage(url)
         # idEmission = re.findall(self.REGEX_ID, page)[0]
         # LBR 10/05/2017
-	data_main_video_tag = page[page.find("data-main-video="):]
-	data_id = data_main_video_tag[data_main_video_tag.find('"')+1:]
-	id_emission = data_id[:data_id.find('"')]
-        #data_main_video_tag = re.findall(self.DATA_MAIN_VIDEO, page)[0]
-	print "Found data-main-video tag:", id_emission
-        #idEmission = re.findall('"[0-9]*"', data_main_video_tag)[0]
-        #idEmission = idEmission.strip('"')
+        data_main_video_tag = page[page.find("data-main-video="):]
+        data_id = data_main_video_tag[data_main_video_tag.find('"') + 1:]
+        id_emission = data_id[:data_id.find('"')]
+        # data_main_video_tag = re.findall(self.DATA_MAIN_VIDEO, page)[0]
+        print "Found data-main-video tag:", id_emission
+        # idEmission = re.findall('"[0-9]*"', data_main_video_tag)[0]
+        # idEmission = idEmission.strip('"')
         # idEmission = "157542198"
         logger.debug("ID de l'émission : %s" % (id_emission))
         return id_emission
@@ -146,8 +150,8 @@ class PluzzDL(object):
 
     def parseInfos(self, pageInfos):
         """
-		Parse le fichier de description XML d'une emission
-		"""
+        Parse le fichier de description XML d'une emission
+        """
         try:
             xml.sax.parseString(pageInfos, PluzzDLInfosHandler(self))
             # Si le lien m3u8 n'existe pas, il faut essayer de creer celui de la plateforme mobile
@@ -156,7 +160,7 @@ class PluzzDL(object):
                 if (self.manifestURL is not None):
                     self.m3u8URL = self.manifestURL.replace("manifest.f4m", "index_2_av.m3u8")
                     self.m3u8URL = self.m3u8URL.replace("/z/", "/i/")
-                # self.m3u8URL = self.M3U8_LINK.replace( "_FILE_NAME_", re.findall( self.REGEX_M3U8, pageInfos )[ 0 ] )
+                    # self.m3u8URL = self.M3U8_LINK.replace( "_FILE_NAME_", re.findall( self.REGEX_M3U8, pageInfos )[ 0 ] )
             logger.debug("URL m3u8 : %s" % (self.m3u8URL))
             logger.debug("URL manifest : %s" % (self.manifestURL))
             logger.debug("Lien RTMP : %s" % (self.lienRTMP))
@@ -167,8 +171,8 @@ class PluzzDL(object):
 
     def parseInfosJSON(self, pageInfos):
         """
-		Parse le fichier de description JSON d'une emission
-		"""
+        Parse le fichier de description JSON d'une emission
+        """
         try:
             data = json.loads(pageInfos)
             self.lienRTMP = None
@@ -191,10 +195,10 @@ class PluzzDL(object):
 
     def getNomFichier(self, repertoire, codeProgramme, timeStamp, extension):
         """
-		Construit le nom du fichier de sortie
-		"""
+        Construit le nom du fichier de sortie
+        """
         return os.path.join(repertoire, "%s-%s.%s" % (
-        datetime.datetime.fromtimestamp(timeStamp).strftime("%Y%m%d"), codeProgramme, extension))
+            datetime.datetime.fromtimestamp(timeStamp).strftime("%Y%m%d"), codeProgramme, extension))
 
     def telechargerSousTitres(self, idEmission, nomChaine, nomVideo):
         """
@@ -247,362 +251,6 @@ class PluzzDL(object):
         logger.debug("Fichier de sous titre srt enregistré")
 
 
-class PluzzDLException(Exception):
-    """
-	Exception levee par PluzzDL
-	"""
-    pass
-
-
-class PluzzDLM3U8(object):
-    """
-	Telechargement des liens m3u8
-	"""
-
-    def __init__(self, m3u8URL, nomFichier, navigateur, stopDownloadEvent, progressFnct):
-        self.m3u8URL = m3u8URL
-        self.nomFichier = nomFichier
-        self.navigateur = navigateur
-        self.stopDownloadEvent = stopDownloadEvent
-        self.progressFnct = progressFnct
-
-        self.historique = Historique()
-
-        self.nomFichierFinal = "%s.mp4" % (self.nomFichier[:-3])
-
-    def ouvrirNouvelleVideo(self):
-        """
-		Creer une nouvelle video
-		"""
-        try:
-            # Ouverture du fichier
-            print "Nom Fichier:", self.nomFichier
-            #			fullPathFile = os.path.join(os.getcwd(), self.nomFichier)
-            #			print "fullPathFile:", fullPathFile
-            self.fichierVideo = open(self.nomFichier, "wb")
-        #			self.fichierVideo = open( fullPathFile, "wb" )
-        except:
-            raise PluzzDLException("Impossible d'écrire dans le répertoire %s" % (os.getcwd()))
-        # Ajout de l'en-tête
-        #	Fait dans creerMKV
-
-    def ouvrirVideoExistante(self):
-        """
-		Ouvre une video existante
-		"""
-        try:
-            # Ouverture du fichier
-            self.fichierVideo = open(self.nomFichier, "a+b")
-        except:
-            raise PluzzDLException("Impossible d'écrire dans le répertoire %s" % (os.getcwd()))
-
-    def creerMKV(self):
-        """
-		Creer un mkv a partir de la video existante (cree l'en-tete de la video)
-	"""
-        logger.info("Création du fichier MKV (vidéo finale); veuillez attendre quelques instants")
-        logger.info("Convert: %s -> %s" % (self.nomFichier, self.nomFichierFinal))
-	commande = "ffmpeg -i %s -c:a aac -strict -2 -vcodec copy %s" % (self.nomFichier, self.nomFichierFinal)
-
-       	try:
-            if (os.system(commande) == 0):
-                os.remove(self.nomFichier)
-                logger.info("Fin !")
-            else:
-                logger.warning(
-                    "Problème lors de la création du MKV avec FFmpeg ; le fichier %s est néanmoins disponible" % (
-                    self.nomFichier))
-        except:
-            raise PluzzDLException("Impossible de créer la vidéo finale")
-
-
-    def telecharger(self):
-        # Recupere le fichier master.m3u8
-        self.m3u8 = self.navigateur.getFichier(self.m3u8URL)
-        # Extrait l'URL de tous les fragments
-        self.listeFragments = re.findall(".+?\.ts", self.m3u8)
-        if not self.listeFragments:
-            self.listeFragments = []
-            self.listeM3U8 = re.findall(".+?index_2_av\.m3u8", self.m3u8)
-            for m3u8 in self.listeM3U8:
-                m3u8data = self.navigateur.getFichier(m3u8)
-                self.listeFragments.extend(re.findall(".+?\.ts", m3u8data))
-        #
-        # Creation de la video
-        #
-        self.premierFragment = 1
-        self.telechargementFini = False
-        video = self.historique.getVideo(self.m3u8URL)
-        # Si la video est dans l'historique
-        if (video is not None):
-            # Si la video existe sur le disque
-            if (os.path.exists(self.nomFichier) or os.path.exists(self.nomFichierFinal)):
-                if (video.finie):
-                    logger.info("La vidéo a déjà été entièrement téléchargée")
-                    if (not os.path.exists(self.nomFichierFinal)):
-                        self.creerMKV()
-                    return
-                else:
-                    self.ouvrirVideoExistante()
-                    self.premierFragment = video.fragments
-                    logger.info("Reprise du téléchargement de la vidéo au fragment %d" % (video.fragments))
-            else:
-                self.ouvrirNouvelleVideo()
-                logger.info(u"Impossible de reprendre le téléchargement de la vidéo, le fichier %s n'existe pas" % (
-                self.nomFichier))
-        else:  # Si la video n'est pas dans l'historique
-            self.ouvrirNouvelleVideo()
-        # Nombre de fragments
-        self.nbFragMax = float(len(self.listeFragments))
-        logger.debug("Nombre de fragments : %d" % (self.nbFragMax))
-        # Ajout des fragments
-        logger.info("Début du téléchargement des fragments")
-        try:
-            i = self.premierFragment
-            while (i <= self.nbFragMax and not self.stopDownloadEvent.isSet()):
-                frag = self.navigateur.getFichier("%s" % (self.listeFragments[i - 1]))
-                self.fichierVideo.write(frag)
-                # Affichage de la progression
-                self.progressFnct(min(int((i / self.nbFragMax) * 100), 100))
-                i += 1
-            if (i == self.nbFragMax + 1):
-                self.progressFnct(100)
-                self.telechargementFini = True
-                logger.info("Fin du téléchargement")
-                self.creerMKV()
-        except KeyboardInterrupt:
-            logger.info("Interruption clavier")
-        except Exception as inst:
-            logger.critical("Erreur inconnue %s" % inst)
-        finally:
-            # Ajout dans l'historique
-            self.historique.ajouter(Video(lien=self.m3u8URL, fragments=i, finie=self.telechargementFini))
-            # Fermeture du fichier
-            self.fichierVideo.close()
-
-
-class PluzzDLF4M(object):
-    """
-	Telechargement des liens f4m
-	"""
-
-    adobePlayer = "http://fpdownload.adobe.com/strobe/FlashMediaPlayback_101.swf"
-
-    def __init__(self, manifestURL, nomFichier, navigateur, stopDownloadEvent, progressFnct):
-        self.manifestURL = manifestURL
-        self.nomFichier = nomFichier
-        self.navigateur = navigateur
-        self.stopDownloadEvent = stopDownloadEvent
-        self.progressFnct = progressFnct
-
-        self.historique = Historique()
-        self.configuration = Configuration()
-        self.hmacKey = self.configuration["hmac_key"].decode("hex")
-        self.playerHash = self.configuration["player_hash"]
-
-    def parseManifest(self):
-        """
-		Parse le manifest
-		"""
-        try:
-            arbre = xml.etree.ElementTree.fromstring(self.manifest)
-            # Duree
-            self.duree = float(arbre.find("{http://ns.adobe.com/f4m/1.0}duration").text)
-            self.pv2 = arbre.find("{http://ns.adobe.com/f4m/1.0}pv-2.0").text
-            media = arbre.findall("{http://ns.adobe.com/f4m/1.0}media")[-1]
-            # Bitrate
-            self.bitrate = int(media.attrib["bitrate"])
-            # URL des fragments
-            urlbootstrap = media.attrib["url"]
-            self.urlFrag = "%s%sSeg1-Frag" % (
-            self.manifestURLToken[: self.manifestURLToken.find("manifest.f4m")], urlbootstrap)
-            # Header du fichier final
-            self.flvHeader = base64.b64decode(media.find("{http://ns.adobe.com/f4m/1.0}metadata").text)
-        except:
-            raise PluzzDLException("Impossible de parser le manifest")
-
-    def ouvrirNouvelleVideo(self):
-        """
-		Creer une nouvelle video
-		"""
-        try:
-            # Ouverture du fichier
-            self.fichierVideo = open(self.nomFichier, "wb")
-        except:
-            raise PluzzDLException("Impossible d'écrire dans le répertoire %s" % (os.getcwd()))
-        # Ajout de l'en-tête FLV
-        self.fichierVideo.write(binascii.a2b_hex("464c56010500000009000000001200010c00000000000000"))
-        # Ajout de l'header du fichier
-        self.fichierVideo.write(self.flvHeader)
-        self.fichierVideo.write(binascii.a2b_hex("00000000"))  # Padding pour avoir des blocs de 8
-
-    def ouvrirVideoExistante(self):
-        """
-		Ouvre une video existante
-		"""
-        try:
-            # Ouverture du fichier
-            self.fichierVideo = open(self.nomFichier, "a+b")
-        except:
-            raise PluzzDLException("Impossible d'écrire dans le répertoire %s" % (os.getcwd()))
-
-    def decompressSWF(self, swfData):
-        """
-		Decompresse un fichier swf
-		"""
-        # Adapted from :
-        #	 Prozacgod
-        #	 http://www.python-forum.org/pythonforum/viewtopic.php?f=2&t=14693
-        if (type(swfData) is str):
-            swfData = StringIO.StringIO(swfData)
-
-        swfData.seek(0, 0)
-        magic = swfData.read(3)
-
-        if (magic == "CWS"):
-            return "FWS" + swfData.read(5) + zlib.decompress(swfData.read())
-        else:
-            return None
-
-    def getPlayerHash(self):
-        """
-		Recupere le sha256 du player flash
-		"""
-        # Get SWF player
-        playerData = self.navigateur.getFichier("http://static.francetv.fr/players/Flash.H264/player.swf")
-        # Uncompress SWF player
-        playerDataUncompress = self.decompressSWF(playerData)
-        # Perform sha256 of uncompressed SWF player
-        hashPlayer = hashlib.sha256(playerDataUncompress).hexdigest()
-        # Perform base64
-        return base64.encodestring(hashPlayer.decode('hex'))
-
-    def debutVideo(self, fragID, fragData):
-        """
-		Trouve le debut de la video dans un fragment
-		"""
-        # Skip fragment header
-        start = fragData.find("mdat") + 4
-        # For all fragment (except frag1)
-        if (fragID > 1):
-            # Skip 2 FLV tags
-            for dummy in range(2):
-                tagLen, = struct.unpack_from(">L", fragData, start)  # Read 32 bits (big endian)
-                tagLen &= 0x00ffffff  # Take the last 24 bits
-                start += tagLen + 11 + 4  # 11 = tag header len ; 4 = tag footer len
-        return start
-
-    def telecharger(self):
-        # Verifie si le lien du manifest contient la chaine "media-secure"
-        if (self.manifestURL.find("media-secure") != -1):
-            raise PluzzDLException("pluzzdl ne sait pas gérer ce type de vidéo (utilisation de DRMs)...")
-        # Lien du manifest (apres le token)
-        self.manifestURLToken = self.navigateur.getFichier("http://hdfauth.francetv.fr/esi/urltokengen2.html?url=%s" % (
-        self.manifestURL[self.manifestURL.find("/z/"):]))
-        # Recupere le manifest
-        self.manifest = self.navigateur.getFichier(self.manifestURLToken)
-        # Parse le manifest
-        self.parseManifest()
-        # Calcul les elements
-        self.hdnea = self.manifestURLToken[self.manifestURLToken.find("hdnea"):]
-        self.pv20, self.hdntl = self.pv2.split(";")
-        self.pvtokenData = r"st=0000000000~exp=9999999999~acl=%2f%2a~data=" + self.pv20 + "!" + self.playerHash
-        self.pvtoken = "pvtoken=%s~hmac=%s" % (
-        urllib.quote(self.pvtokenData), hmac.new(self.hmacKey, self.pvtokenData, hashlib.sha256).hexdigest())
-
-        #
-        # Creation de la video
-        #
-        self.premierFragment = 1
-        self.telechargementFini = False
-
-        video = self.historique.getVideo(self.urlFrag)
-        # Si la video est dans l'historique
-        if (video is not None):
-            # Si la video existe sur le disque
-            if (os.path.exists(self.nomFichier)):
-                if (video.finie):
-                    logger.info("La vidéo a déjà été entièrement téléchargée")
-                    return
-                else:
-                    self.ouvrirVideoExistante()
-                    self.premierFragment = video.fragments
-                    logger.info("Reprise du téléchargement de la vidéo au fragment %d" % (video.fragments))
-            else:
-                self.ouvrirNouvelleVideo()
-                logger.info("Impossible de reprendre le téléchargement de la vidéo, le fichier %s n'existe pas" % (
-                self.nomFichier))
-        else:  # Si la video n'est pas dans l'historique
-            self.ouvrirNouvelleVideo()
-
-        # Calcul l'estimation du nombre de fragments
-        self.nbFragMax = round(self.duree / 6)
-        logger.debug("Estimation du nombre de fragments : %d" % (self.nbFragMax))
-
-        # Ajout des fragments
-        logger.info("Début du téléchargement des fragments")
-        try:
-            i = self.premierFragment
-            self.navigateur.appendCookie("hdntl", self.hdntl)
-            while (not self.stopDownloadEvent.isSet()):
-                # frag	= self.navigateur.getFichier( "%s%d?%s&%s&%s" %( self.urlFrag, i, self.pvtoken, self.hdntl, self.hdnea ) )
-                frag = self.navigateur.getFichier("%s%d" % (self.urlFrag, i), referer=self.adobePlayer)
-                debut = self.debutVideo(i, frag)
-                self.fichierVideo.write(frag[debut:])
-                # Affichage de la progression
-                self.progressFnct(min(int((i / self.nbFragMax) * 100), 100))
-                i += 1
-        except urllib2.URLError, e:
-            if (hasattr(e, 'code')):
-                if (e.code == 403):
-                    if (e.reason == "Forbidden"):
-                        logger.info("Le hash du player semble invalide ; calcul du nouveau hash")
-                        newPlayerHash = self.getPlayerHash()
-                        if (newPlayerHash != self.playerHash):
-                            self.configuration["player_hash"] = newPlayerHash
-                            self.configuration.writeConfig()
-                            logger.info("Un nouveau hash a été trouvé ; essayez de relancer l'application")
-                        else:
-                            logger.critical("Pas de nouveau hash disponible...")
-                    else:
-                        logger.critical("Impossible de charger la vidéo")
-                elif (e.code == 404):
-                    self.progressFnct(100)
-                    self.telechargementFini = True
-                    logger.info("Fin du téléchargement")
-        except KeyboardInterrupt:
-            logger.info("Interruption clavier")
-        except:
-            logger.critical("Erreur inconnue")
-        finally:
-            # Ajout dans l'historique
-            self.historique.ajouter(Video(lien=self.urlFrag, fragments=i, finie=self.telechargementFini))
-            # Fermeture du fichier
-            self.fichierVideo.close()
-
-
-class PluzzDLRTMP(object):
-    """
-	Telechargement des liens rtmp
-	"""
-
-    def __init__(self, lienRTMP):
-        self.lien = lienRTMP
-
-    def telecharger(self):
-        logger.info("Lien RTMP : %s\nUtiliser par exemple rtmpdump pour la recuperer directement" % (self.lien))
-
-
-class PluzzDLMMS(object):
-    """
-	Telechargement des liens mms
-	"""
-
-    def __init__(self, lienMMS):
-        self.lien = lienMMS
-
-    def telecharger(self):
-        logger.info("Lien MMS : %s\nUtiliser par exemple mimms ou msdl pour la recuperer directement" % (self.lien))
 
 
 class PluzzDLInfosHandler(xml.sax.handler.ContentHandler):
